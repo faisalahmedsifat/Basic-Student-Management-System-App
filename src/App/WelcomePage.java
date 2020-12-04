@@ -27,17 +27,111 @@ public class WelcomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backgroundPanel = new javax.swing.JPanel();
+        welcomeLabel = new javax.swing.JLabel();
+        devPanel = new javax.swing.JPanel();
+        devLabel = new javax.swing.JLabel();
+        devName1 = new javax.swing.JLabel();
+        devName2 = new javax.swing.JLabel();
+        devName3 = new javax.swing.JLabel();
+        devName4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        backgroundPanel.setBackground(new java.awt.Color(30, 98, 110));
+
+        welcomeLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        welcomeLabel.setForeground(new java.awt.Color(180, 202, 206));
+        welcomeLabel.setText("Welcome to Basic Student Management System");
+        welcomeLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 202, 206), 3));
+
+        devPanel.setBackground(new java.awt.Color(105, 150, 158));
+
+        devLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        devLabel.setText("Developed By:");
+
+        devName1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        devName1.setText(">Faisal Ahmed Sifat");
+
+        devName2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        devName2.setText(">Md Sahadul Hasan Arian");
+
+        devName3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        devName3.setText(">Abu Tayeb Mohammad Ayon");
+
+        devName4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        devName4.setText(">Shabab Irtiza Ahammad");
+
+        jSeparator1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        javax.swing.GroupLayout devPanelLayout = new javax.swing.GroupLayout(devPanel);
+        devPanel.setLayout(devPanelLayout);
+        devPanelLayout.setHorizontalGroup(
+            devPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devPanelLayout.createSequentialGroup()
+                .addGroup(devPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(devPanelLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(devPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(devName2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(devName1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(devName4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(devName3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(devPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(devLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
+        );
+        devPanelLayout.setVerticalGroup(
+            devPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devPanelLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(devLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(devName1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(devName2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(devName3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(devName4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
+        backgroundPanel.setLayout(backgroundPanelLayout);
+        backgroundPanelLayout.setHorizontalGroup(
+            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcomeLabel)
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addComponent(devPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        backgroundPanelLayout.setVerticalGroup(
+            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(welcomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(devPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +173,14 @@ public class WelcomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backgroundPanel;
+    private javax.swing.JLabel devLabel;
+    private javax.swing.JLabel devName1;
+    private javax.swing.JLabel devName2;
+    private javax.swing.JLabel devName3;
+    private javax.swing.JLabel devName4;
+    private javax.swing.JPanel devPanel;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
