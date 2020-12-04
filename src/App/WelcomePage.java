@@ -36,6 +36,8 @@ public class WelcomePage extends javax.swing.JFrame {
         devName3 = new javax.swing.JLabel();
         devName4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        loginPagButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +104,34 @@ public class WelcomePage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        loginPagButton.setBackground(new java.awt.Color(105, 150, 158));
+        loginPagButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        loginPagButton.setForeground(new java.awt.Color(51, 51, 51));
+        loginPagButton.setMnemonic('\r');
+        loginPagButton.setText("Continue to login page");
+        loginPagButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        loginPagButton.setBorderPainted(false);
+        loginPagButton.setFocusTraversalPolicyProvider(true);
+        loginPagButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginPagButtonActionPerformed(evt);
+            }
+        });
+
+        exitButton.setBackground(new java.awt.Color(105, 150, 158));
+        exitButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(51, 51, 51));
+        exitButton.setMnemonic('\r');
+        exitButton.setText("EXIT");
+        exitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        exitButton.setBorderPainted(false);
+        exitButton.setFocusTraversalPolicyProvider(true);
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
         backgroundPanelLayout.setHorizontalGroup(
@@ -112,15 +142,27 @@ public class WelcomePage extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addComponent(devPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginPagButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(welcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(devPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(devPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(loginPagButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 105, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,6 +178,14 @@ public class WelcomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginPagButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPagButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginPagButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,10 +215,8 @@ public class WelcomePage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WelcomePage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new WelcomePage().setVisible(true);
         });
     }
 
@@ -180,7 +228,9 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JLabel devName3;
     private javax.swing.JLabel devName4;
     private javax.swing.JPanel devPanel;
+    private javax.swing.JButton exitButton;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton loginPagButton;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
