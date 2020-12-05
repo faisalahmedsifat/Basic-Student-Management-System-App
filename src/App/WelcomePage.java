@@ -5,6 +5,8 @@
  */
 package App;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sifat
@@ -184,7 +186,10 @@ public class WelcomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_loginPagButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to exit?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION){
+            dispose();
+        }
     }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
