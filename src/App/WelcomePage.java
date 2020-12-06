@@ -49,6 +49,7 @@ public class WelcomePage extends javax.swing.JFrame {
 
         welcomeLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         welcomeLabel.setForeground(new java.awt.Color(180, 202, 206));
+        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeLabel.setText("Welcome to Basic Student Management System");
         welcomeLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 202, 206), 3));
 
