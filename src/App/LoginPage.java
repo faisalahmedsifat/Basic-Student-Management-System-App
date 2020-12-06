@@ -31,7 +31,8 @@ public class LoginPage extends javax.swing.JFrame {
     private void initComponents() {
 
         leftPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        iconUniversity = new javax.swing.JLabel();
+        universityName = new javax.swing.JLabel();
         rightAdminPanel = new javax.swing.JPanel();
         adminLoginText = new javax.swing.JLabel();
         adminEmailText = new javax.swing.JLabel();
@@ -57,13 +58,19 @@ public class LoginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 200));
+        setPreferredSize(new java.awt.Dimension(875, 491));
         setSize(new java.awt.Dimension(875, 491));
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
-        jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconUniversity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
+        iconUniversity.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        universityName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        universityName.setForeground(new java.awt.Color(117, 97, 119));
+        universityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        universityName.setText("North South University");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -71,21 +78,28 @@ public class LoginPage extends javax.swing.JFrame {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addGap(143, 143, 143))
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(96, 96, 96))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(319, 319, 319))
+                .addGap(58, 58, 58)
+                .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(244, 244, 244))
         );
 
         rightAdminPanel.setBackground(new java.awt.Color(49, 19, 51));
 
         adminLoginText.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         adminLoginText.setForeground(new java.awt.Color(204, 204, 204));
+        adminLoginText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_database_administrator_21px.png"))); // NOI18N
         adminLoginText.setText("Admin Login");
 
         adminEmailText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -136,14 +150,6 @@ public class LoginPage extends javax.swing.JFrame {
         rightAdminPanel.setLayout(rightAdminPanelLayout);
         rightAdminPanelLayout.setHorizontalGroup(
             rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightAdminPanelLayout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addGroup(rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adminToStudentText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rightAdminPanelLayout.createSequentialGroup()
-                        .addComponent(adminToStudentSeparator)
-                        .addGap(12, 12, 12)))
-                .addGap(20, 20, 20))
             .addGroup(rightAdminPanelLayout.createSequentialGroup()
                 .addGroup(rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rightAdminPanelLayout.createSequentialGroup()
@@ -168,32 +174,39 @@ public class LoginPage extends javax.swing.JFrame {
                         .addComponent(adminLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(69, 69, 69)))
                 .addGap(95, 95, 95))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightAdminPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminToStudentText, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminToStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         rightAdminPanelLayout.setVerticalGroup(
             rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightAdminPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(adminToStudentText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminToStudentText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminToStudentSeparator)
+                .addComponent(adminToStudentSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addGap(50, 50, 50)
-                .addComponent(adminEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminEmailTextField)
+                .addComponent(adminEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminEmailSeparator)
+                .addComponent(adminEmailSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminPasswordField)
+                .addComponent(adminPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminPasswordSeparator)
+                .addComponent(adminPasswordSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
-                .addComponent(adminLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addGap(105, 105, 105))
         );
+
+        rightAdminPanel.setVisible(false);
 
         rightStudentPanel.setBackground(new java.awt.Color(49, 19, 51));
         rightStudentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,6 +217,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         studentLoginText.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         studentLoginText.setForeground(new java.awt.Color(204, 204, 204));
+        studentLoginText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_read_online_21px.png"))); // NOI18N
         studentLoginText.setText("Student Login");
 
         studentEmailText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -253,20 +267,12 @@ public class LoginPage extends javax.swing.JFrame {
 
         studentToAdminSeparator.setBackground(new java.awt.Color(204, 204, 204));
 
-        rightStudentPanel.setVisible(false);
+        //rightStudentPanel.setVisible(false);
 
         javax.swing.GroupLayout rightStudentPanelLayout = new javax.swing.GroupLayout(rightStudentPanel);
         rightStudentPanel.setLayout(rightStudentPanelLayout);
         rightStudentPanelLayout.setHorizontalGroup(
             rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightStudentPanelLayout.createSequentialGroup()
-                .addGap(288, 288, 288)
-                .addGroup(rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(studentToAdminText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rightStudentPanelLayout.createSequentialGroup()
-                        .addComponent(studentToAdminSeparator)
-                        .addGap(12, 12, 12)))
-                .addGap(20, 20, 20))
             .addGroup(rightStudentPanelLayout.createSequentialGroup()
                 .addGroup(rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rightStudentPanelLayout.createSequentialGroup()
@@ -290,13 +296,20 @@ public class LoginPage extends javax.swing.JFrame {
                         .addComponent(studentLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(51, 51, 51)))
                 .addGap(99, 99, 99))
+            .addGroup(rightStudentPanelLayout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addGroup(rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(studentToAdminText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightStudentPanelLayout.createSequentialGroup()
+                        .addComponent(studentToAdminSeparator)
+                        .addGap(32, 32, 32))))
         );
         rightStudentPanelLayout.setVerticalGroup(
             rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightStudentPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(studentToAdminText, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
+                .addComponent(studentToAdminText, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentToAdminSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -424,7 +437,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel adminPasswordText;
     private javax.swing.JSeparator adminToStudentSeparator;
     private javax.swing.JLabel adminToStudentText;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconUniversity;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightAdminPanel;
     private javax.swing.JPanel rightStudentPanel;
@@ -438,5 +451,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel studentPasswordText;
     private javax.swing.JSeparator studentToAdminSeparator;
     private javax.swing.JLabel studentToAdminText;
+    private javax.swing.JLabel universityName;
     // End of variables declaration//GEN-END:variables
 }
