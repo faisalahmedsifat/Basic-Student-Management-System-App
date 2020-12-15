@@ -134,6 +134,11 @@ public class LoginPage extends javax.swing.JFrame {
         adminLoginButton.setForeground(new java.awt.Color(204, 204, 204));
         adminLoginButton.setText("Login as admin");
         adminLoginButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        adminLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminLoginButtonActionPerformed(evt);
+            }
+        });
 
         adminToStudentText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         adminToStudentText.setForeground(new java.awt.Color(204, 204, 204));
@@ -389,6 +394,33 @@ public class LoginPage extends javax.swing.JFrame {
             rightStudentPanel.setVisible(false);
         }
     }//GEN-LAST:event_studentToAdminTextMouseClicked
+
+    private void adminLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginButtonActionPerformed
+        // TODO add your handling code here:
+        try{
+            conn c1 = new conn();
+            String username = this.adminEmailTextField.getText();
+            String password = String.valueOf(this.adminPasswordField.getPassword());
+            
+            String query = "SELECT * FROM admin_login WHERE username = '" + username + "' and password = '" + password + "'";
+            
+            if(c1.s.executeQuery(query).next()){
+                // Logged in
+                CurrentSession.isLoggedIn = true;
+                CurrentSession.isAdmin = true;
+                CurrentSession.ID = 0;
+                String isAdmn = (CurrentSession.isAdmin)?"Admin":"NonAdmin";
+                JOptionPane.showMessageDialog(null, "Successfully logged in as "+ isAdmn +""); // For debug Purpose only, Will take to admin panel when admin panel is created
+            }else{
+                // Invalid Username or Password
+                JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+            }
+            
+        }catch(Exception ae){
+             ae.printStackTrace();
+        }
+       
+    }//GEN-LAST:event_adminLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
