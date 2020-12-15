@@ -113,7 +113,7 @@
               <Color blue="77" green="61" red="75" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="North South University"/>
+            <Property name="text" type="java.lang.String" value="X - Y - Z University"/>
           </Properties>
         </Component>
       </SubComponents>

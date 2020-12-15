@@ -70,7 +70,7 @@ public class LoginPage extends javax.swing.JFrame {
         universityName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         universityName.setForeground(new java.awt.Color(117, 97, 119));
         universityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        universityName.setText("North South University");
+        universityName.setText("X - Y - Z University");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
