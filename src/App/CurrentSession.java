@@ -13,4 +13,5 @@ public class CurrentSession {
     static boolean isLoggedIn = false;
     static boolean isAdmin = false;
     static int ID = -1;
+    static String username = "";
 }
