@@ -406,11 +406,18 @@ public class LoginPage extends javax.swing.JFrame {
             
             if(c1.s.executeQuery(query).next()){
                 // Logged in
+                
+                // Set The Credentials in the Current Session
                 CurrentSession.isLoggedIn = true;
                 CurrentSession.isAdmin = true;
                 CurrentSession.ID = 0;
-                String isAdmn = (CurrentSession.isAdmin)?"Admin":"NonAdmin";
-                JOptionPane.showMessageDialog(null, "Successfully logged in as "+ isAdmn +""); // For debug Purpose only, Will take to admin panel when admin panel is created
+                CurrentSession.username = username;
+               
+                // Open The Admin Panel
+                AdminHome adminHomex = new AdminHome();
+                adminHomex.setVisible(true);
+                dispose(); 
+                
             }else{
                 // Invalid Username or Password
                 JOptionPane.showMessageDialog(null, "Invalid Credentials!");
