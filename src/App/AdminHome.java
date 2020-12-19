@@ -35,19 +35,25 @@ public class AdminHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        rightPanel = new javax.swing.JPanel();
         adminToStudentText = new javax.swing.JLabel();
         adminLoginText = new javax.swing.JLabel();
-        AssignStudentButton = new javax.swing.JLabel();
         AddStudentButton = new javax.swing.JLabel();
+        addStudentSeparator = new javax.swing.JSeparator();
         EditStudentButton = new javax.swing.JLabel();
+        editStudentSeparator = new javax.swing.JSeparator();
+        AssignStudentButton = new javax.swing.JLabel();
+        assignStudentSeparator = new javax.swing.JSeparator();
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(155, 89, 182));
+        rightPanel.setBackground(new java.awt.Color(49, 19, 51));
+        addStudentSeparator.setVisible(false);
+        editStudentSeparator.setVisible(false);
+        assignStudentSeparator.setVisible(false);
 
         adminToStudentText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         adminToStudentText.setForeground(new java.awt.Color(236, 240, 241));
@@ -58,66 +64,93 @@ public class AdminHome extends javax.swing.JFrame {
         adminLoginText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_database_administrator_21px.png"))); // NOI18N
         adminLoginText.setText("Admin Panel");
 
-        AssignStudentButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AssignStudentButton.setForeground(new java.awt.Color(236, 240, 241));
-        AssignStudentButton.setText("Assign Courses");
-        AssignStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AssignStudentButtonMouseClicked(evt);
-            }
-        });
-
-        AddStudentButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddStudentButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         AddStudentButton.setForeground(new java.awt.Color(236, 240, 241));
         AddStudentButton.setText("Add Student");
         AddStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddStudentButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AddStudentButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AddStudentButtonMouseExited(evt);
+            }
         });
 
-        EditStudentButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        EditStudentButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         EditStudentButton.setForeground(new java.awt.Color(236, 240, 241));
         EditStudentButton.setText("Edit Student Details");
         EditStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EditStudentButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditStudentButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditStudentButtonMouseExited(evt);
+            }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        AssignStudentButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        AssignStudentButton.setForeground(new java.awt.Color(236, 240, 241));
+        AssignStudentButton.setText("Assign Courses");
+        AssignStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AssignStudentButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AssignStudentButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AssignStudentButtonMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
+        rightPanel.setLayout(rightPanelLayout);
+        rightPanelLayout.setHorizontalGroup(
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(adminToStudentText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EditStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AssignStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(rightPanelLayout.createSequentialGroup()
+                        .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addStudentSeparator)
+                            .addComponent(AddStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(AssignStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editStudentSeparator)
+                            .addComponent(assignStudentSeparator))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        rightPanelLayout.setVerticalGroup(
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(adminToStudentText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(AddStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
+                .addComponent(addStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(EditStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
+                .addComponent(editStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(AssignStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(216, 216, 216))
+                .addGap(0, 0, 0)
+                .addComponent(assignStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124))
         );
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -161,12 +194,12 @@ public class AdminHome extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -187,6 +220,37 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Clicked The Assign Course Button");
     }//GEN-LAST:event_AssignStudentButtonMouseClicked
+
+    private void AddStudentButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentButtonMouseEntered
+
+        // TODO add your handling code here:
+        addStudentSeparator.setVisible(true);
+    }//GEN-LAST:event_AddStudentButtonMouseEntered
+
+    private void AddStudentButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentButtonMouseExited
+        // TODO add your handling code here:
+        addStudentSeparator.setVisible(false);
+    }//GEN-LAST:event_AddStudentButtonMouseExited
+
+    private void EditStudentButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditStudentButtonMouseEntered
+        // TODO add your handling code here:
+        editStudentSeparator.setVisible(true);
+    }//GEN-LAST:event_EditStudentButtonMouseEntered
+
+    private void EditStudentButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditStudentButtonMouseExited
+        // TODO add your handling code here:
+        editStudentSeparator.setVisible(false);
+    }//GEN-LAST:event_EditStudentButtonMouseExited
+
+    private void AssignStudentButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignStudentButtonMouseEntered
+        assignStudentSeparator.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AssignStudentButtonMouseEntered
+
+    private void AssignStudentButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignStudentButtonMouseExited
+        assignStudentSeparator.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AssignStudentButtonMouseExited
 
     /**
      * @param args the command line arguments
@@ -227,11 +291,14 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel AddStudentButton;
     private javax.swing.JLabel AssignStudentButton;
     private javax.swing.JLabel EditStudentButton;
+    private javax.swing.JSeparator addStudentSeparator;
     private javax.swing.JLabel adminLoginText;
     private javax.swing.JLabel adminToStudentText;
+    private javax.swing.JSeparator assignStudentSeparator;
+    private javax.swing.JSeparator editStudentSeparator;
     private javax.swing.JLabel iconUniversity;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftPanel;
+    private javax.swing.JPanel rightPanel;
     private javax.swing.JLabel universityName;
     // End of variables declaration//GEN-END:variables
 }
