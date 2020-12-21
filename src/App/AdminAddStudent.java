@@ -21,7 +21,7 @@ public class AdminAddStudent extends javax.swing.JFrame {
         initComponents();
         
         // Set the username to the current sessions username
-        adminToStudentText.setText("Hello," + CurrentSession.username + "");
+        adminToStudentText.setText("Hello," + CurrentSession.getUsername() + "");
     }
 
     /**
