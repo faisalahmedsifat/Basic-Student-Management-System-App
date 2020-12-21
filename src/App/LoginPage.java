@@ -5,7 +5,6 @@
  */
 package App;
 
-import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -408,10 +407,10 @@ public class LoginPage extends javax.swing.JFrame {
                 // Logged in
                 
                 // Set The Credentials in the Current Session
-                CurrentSession.isLoggedIn = true;
-                CurrentSession.isAdmin = true;
-                CurrentSession.ID = 0;
-                CurrentSession.username = username;
+                CurrentSession.setIsLoggedIn(true);
+                CurrentSession.setIsAdmin(true);
+                CurrentSession.setID(0);
+                CurrentSession.setUsername(username);
                
                 // Open The Admin Panel
                 AdminHome adminHomex = new AdminHome();
