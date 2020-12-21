@@ -8,8 +8,7 @@ package App;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author ari13
+ * @author Sifat
  */
 public class StudentViewDetailsTry extends javax.swing.JFrame {
 
@@ -20,7 +19,7 @@ public class StudentViewDetailsTry extends javax.swing.JFrame {
         initComponents();
         
         // Set the username to the current sessions username
-        welcomeText.setText("Hello," + CurrentSession.username + "");
+        welcomeText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
     }

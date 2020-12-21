@@ -20,10 +20,10 @@ public class AdminHome extends javax.swing.JFrame {
         initComponents();
         
         // Set the username to the current sessions username
-        adminToStudentText.setText("Hello," + CurrentSession.username + "");
+        adminToStudentText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
-        JOptionPane.showMessageDialog(null, "Successfully logged in as "+ CurrentSession.username +"");
+        JOptionPane.showMessageDialog(null, "Successfully logged in as "+CurrentSession.getUsername() +"");
     }
 
     /**
