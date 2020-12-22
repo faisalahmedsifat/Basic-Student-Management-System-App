@@ -215,7 +215,9 @@ public class AdminHome extends javax.swing.JFrame {
 
     private void EditStudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditStudentButtonMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Clicked The Edit Student Button");
+        AdminEditStudent admineditstudent = new AdminEditStudent();
+        admineditstudent.setVisible(true);
+        dispose();
     }//GEN-LAST:event_EditStudentButtonMouseClicked
 
     private void AssignStudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignStudentButtonMouseClicked
