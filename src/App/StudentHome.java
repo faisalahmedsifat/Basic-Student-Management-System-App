@@ -206,18 +206,15 @@ public class StudentHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsButtonMouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Clicked The Add Student Button");
+
     }//GEN-LAST:event_viewDetailsButtonMouseClicked
 
     private void updateDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateDetailsButtonMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Clicked The Edit Student Button");
     }//GEN-LAST:event_updateDetailsButtonMouseClicked
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Clicked The Assign Course Button");
+ 
     }//GEN-LAST:event_ExitButtonMouseClicked
 
     private void viewDetailsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsButtonMouseEntered
