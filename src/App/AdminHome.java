@@ -15,7 +15,18 @@ public class AdminHome extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHome
+     * @param show
      */
+    public AdminHome(boolean fromBackBtn) {
+        initComponents();
+        
+        // Set the username to the current sessions username
+        adminToStudentText.setText("Hello," + CurrentSession.getUsername() + "");
+        
+        // Show the Successful Login Prompt
+        if(fromBackBtn) JOptionPane.showMessageDialog(null, "Successfully logged in as "+CurrentSession.getUsername() +"");
+    }
+    
     public AdminHome() {
         initComponents();
         
