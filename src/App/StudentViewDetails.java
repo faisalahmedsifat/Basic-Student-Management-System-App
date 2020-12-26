@@ -5,8 +5,6 @@
  */
 package App;
 
-import javax.swing.JOptionPane;
-
 /**
  * @author Sifat
  */
