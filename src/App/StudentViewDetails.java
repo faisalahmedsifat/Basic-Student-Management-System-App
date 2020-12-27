@@ -11,13 +11,13 @@ package App;
 public class StudentViewDetails extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminHome
+     * Creates new form
      */
     public StudentViewDetails() {
         initComponents();
         
         // Set the username to the current sessions username
-        welcomeText.setText("Hello," + CurrentSession.getUsername() + "");
+        saveChangesLabel.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
     }
@@ -32,7 +32,7 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         rightPanel = new javax.swing.JPanel();
-        welcomeText = new javax.swing.JLabel();
+        saveChangesLabel = new javax.swing.JLabel();
         fullNameConst = new javax.swing.JLabel();
         idConst = new javax.swing.JLabel();
         dateOfBirthConst = new javax.swing.JLabel();
@@ -54,7 +54,16 @@ public class StudentViewDetails extends javax.swing.JFrame {
         citizenshipConst = new javax.swing.JLabel();
         citizenshipLabel = new javax.swing.JLabel();
         maritalStatusConst = new javax.swing.JLabel();
-        maritalStatusConst1 = new javax.swing.JLabel();
+        maritalStatusLabel = new javax.swing.JLabel();
+        editCellLabel = new javax.swing.JLabel();
+        editAddressLabel = new javax.swing.JLabel();
+        editEmailLabel = new javax.swing.JLabel();
+        editMaritalLabel = new javax.swing.JLabel();
+        editMaritalTextField = new javax.swing.JTextField();
+        editCellTextField = new javax.swing.JTextField();
+        editAddressTextField = new javax.swing.JTextField();
+        editEmailTextField = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
@@ -62,187 +71,203 @@ public class StudentViewDetails extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
+        rightPanel.setLayout(null);
+        editCellTextField.setVisible(false);
+        editMaritalTextField.setVisible(false);
+        editEmailTextField.setVisible(false);
+        editAddressTextField.setVisible(false);
 
-        welcomeText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        welcomeText.setForeground(new java.awt.Color(236, 240, 241));
-        welcomeText.setText("Welcome, [USERNAME]");
+        saveChangesLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        saveChangesLabel.setForeground(new java.awt.Color(236, 240, 241));
+        saveChangesLabel.setText("Click Here to save changes");
+        rightPanel.add(saveChangesLabel);
+        saveChangesLabel.setBounds(450, 50, 176, 31);
 
         fullNameConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fullNameConst.setForeground(new java.awt.Color(255, 255, 255));
         fullNameConst.setText("Full Name            :");
+        rightPanel.add(fullNameConst);
+        fullNameConst.setBounds(62, 127, 117, 24);
 
         idConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         idConst.setForeground(new java.awt.Color(255, 255, 255));
         idConst.setText("ID                          :");
+        rightPanel.add(idConst);
+        idConst.setBounds(62, 93, 117, 16);
 
         dateOfBirthConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         dateOfBirthConst.setForeground(new java.awt.Color(255, 255, 255));
         dateOfBirthConst.setText("Date Of Birth       :");
+        rightPanel.add(dateOfBirthConst);
+        dateOfBirthConst.setBounds(62, 357, 117, 16);
 
         fatherNameConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fatherNameConst.setForeground(new java.awt.Color(255, 255, 255));
         fatherNameConst.setText("Father's Name    :");
+        rightPanel.add(fatherNameConst);
+        fatherNameConst.setBounds(62, 169, 117, 16);
 
         motherNameConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         motherNameConst.setForeground(new java.awt.Color(255, 255, 255));
         motherNameConst.setText("Mother's Name   :");
+        rightPanel.add(motherNameConst);
+        motherNameConst.setBounds(62, 203, 117, 16);
 
         genderConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         genderConst.setForeground(new java.awt.Color(255, 255, 255));
         genderConst.setText("Gender                :");
+        rightPanel.add(genderConst);
+        genderConst.setBounds(62, 395, 117, 16);
 
         addressConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         addressConst.setForeground(new java.awt.Color(255, 255, 255));
         addressConst.setText("Address               :");
+        rightPanel.add(addressConst);
+        addressConst.setBounds(62, 278, 117, 16);
 
         cellPhoneConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         cellPhoneConst.setForeground(new java.awt.Color(255, 255, 255));
         cellPhoneConst.setText("Cell Phone          :");
+        rightPanel.add(cellPhoneConst);
+        cellPhoneConst.setBounds(62, 237, 117, 16);
 
         fullNameLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fullNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         fullNameLabel.setText("Hello");
+        rightPanel.add(fullNameLabel);
+        fullNameLabel.setBounds(185, 127, 416, 24);
 
         idlabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         idlabel.setForeground(new java.awt.Color(255, 255, 255));
         idlabel.setText("Hello");
+        rightPanel.add(idlabel);
+        idlabel.setBounds(185, 93, 416, 16);
 
         dateOfBirthLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         dateOfBirthLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateOfBirthLabel.setText("Hello");
+        rightPanel.add(dateOfBirthLabel);
+        dateOfBirthLabel.setBounds(185, 354, 416, 23);
 
         fatherNameLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fatherNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         fatherNameLabel.setText("Hello");
+        rightPanel.add(fatherNameLabel);
+        fatherNameLabel.setBounds(185, 169, 416, 16);
 
         motherNameLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         motherNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         motherNameLabel.setText("Hello");
+        rightPanel.add(motherNameLabel);
+        motherNameLabel.setBounds(185, 203, 416, 16);
 
         genderLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         genderLabel.setForeground(new java.awt.Color(255, 255, 255));
         genderLabel.setText("Hello");
+        rightPanel.add(genderLabel);
+        genderLabel.setBounds(185, 395, 416, 16);
 
         addressLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         addressLabel.setForeground(new java.awt.Color(255, 255, 255));
         addressLabel.setText("Hello");
+        rightPanel.add(addressLabel);
+        addressLabel.setBounds(185, 275, 416, 30);
 
         cellPhoneLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         cellPhoneLabel.setForeground(new java.awt.Color(255, 255, 255));
         cellPhoneLabel.setText("Hello");
+        rightPanel.add(cellPhoneLabel);
+        cellPhoneLabel.setBounds(185, 237, 416, 16);
 
         emailConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         emailConst.setForeground(new java.awt.Color(255, 255, 255));
         emailConst.setText("Email                    :");
+        rightPanel.add(emailConst);
+        emailConst.setBounds(62, 320, 117, 16);
 
         emailLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         emailLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailLabel.setText("Hello");
+        rightPanel.add(emailLabel);
+        emailLabel.setBounds(185, 320, 416, 16);
 
         citizenshipConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         citizenshipConst.setForeground(new java.awt.Color(255, 255, 255));
         citizenshipConst.setText("Citizenship         :");
+        rightPanel.add(citizenshipConst);
+        citizenshipConst.setBounds(62, 429, 117, 16);
 
         citizenshipLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         citizenshipLabel.setForeground(new java.awt.Color(255, 255, 255));
         citizenshipLabel.setText("hello");
+        rightPanel.add(citizenshipLabel);
+        citizenshipLabel.setBounds(185, 429, 416, 16);
 
         maritalStatusConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         maritalStatusConst.setForeground(new java.awt.Color(255, 255, 255));
         maritalStatusConst.setText("Marital Status     :");
+        rightPanel.add(maritalStatusConst);
+        maritalStatusConst.setBounds(62, 463, 117, 16);
 
-        maritalStatusConst1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        maritalStatusConst1.setForeground(new java.awt.Color(255, 255, 255));
-        maritalStatusConst1.setText("Hello");
+        maritalStatusLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        maritalStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
+        maritalStatusLabel.setText("Hello");
+        rightPanel.add(maritalStatusLabel);
+        maritalStatusLabel.setBounds(185, 463, 416, 16);
 
-        javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
-        rightPanel.setLayout(rightPanelLayout);
-        rightPanelLayout.setHorizontalGroup(
-            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rightPanelLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addressConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(genderConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(motherNameConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fatherNameConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fullNameConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cellPhoneConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dateOfBirthConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(citizenshipConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(maritalStatusConst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                    .addComponent(idlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fatherNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(motherNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cellPhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(citizenshipLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(maritalStatusConst1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(welcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        rightPanelLayout.setVerticalGroup(
-            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rightPanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fullNameConst, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fatherNameConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fatherNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(motherNameConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(motherNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cellPhoneConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cellPhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateOfBirthConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genderConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(citizenshipConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(citizenshipLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maritalStatusConst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(maritalStatusConst1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(61, 61, 61))
-        );
+        editCellLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_edit_20px.png"))); // NOI18N
+        editCellLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editCellLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(editCellLabel);
+        editCellLabel.setBounds(607, 237, 20, 16);
+
+        editAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_edit_20px.png"))); // NOI18N
+        editAddressLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editAddressLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(editAddressLabel);
+        editAddressLabel.setBounds(607, 271, 20, 16);
+
+        editEmailLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_edit_20px.png"))); // NOI18N
+        editEmailLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editEmailLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(editEmailLabel);
+        editEmailLabel.setBounds(607, 320, 20, 16);
+
+        editMaritalLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_edit_20px.png"))); // NOI18N
+        editMaritalLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMaritalLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(editMaritalLabel);
+        editMaritalLabel.setBounds(610, 460, 20, 16);
+
+        editMaritalTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rightPanel.add(editMaritalTextField);
+        editMaritalTextField.setBounds(180, 450, 410, 30);
+
+        editCellTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rightPanel.add(editCellTextField);
+        editCellTextField.setBounds(180, 230, 410, 30);
+
+        editAddressTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rightPanel.add(editAddressTextField);
+        editAddressTextField.setBounds(180, 270, 410, 30);
+
+        editEmailTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rightPanel.add(editEmailTextField);
+        editEmailTextField.setBounds(180, 310, 410, 30);
+        rightPanel.add(jSeparator1);
+        jSeparator1.setBounds(450, 70, 160, 10);
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -285,8 +310,9 @@ public class StudentViewDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,9 +323,69 @@ public class StudentViewDetails extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void editCellLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCellLabelMouseClicked
+        // TODO add your handling code here:
+        if(cellPhoneLabel.isVisible()){
+            
+            cellPhoneLabel.setVisible(false);
+            editCellTextField.setText(cellPhoneLabel.getText());
+            editCellTextField.setVisible(true);
+        }else{
+            cellPhoneLabel.setText(editCellTextField.getText());
+            editCellTextField.setVisible(false);
+            cellPhoneLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_editCellLabelMouseClicked
+
+    private void editAddressLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editAddressLabelMouseClicked
+        // TODO add your handling code here:
+        if(addressLabel.isVisible()){
+            
+            addressLabel.setVisible(false);
+            editAddressTextField.setVisible(true);
+            editAddressTextField.setText(addressLabel.getText());
+        }else{
+            addressLabel.setText(editAddressTextField.getText());
+            editAddressTextField.setVisible(false);
+            addressLabel.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_editAddressLabelMouseClicked
+
+    private void editEmailLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEmailLabelMouseClicked
+        // TODO add your handling code here:
+        if(emailLabel.isVisible()){
+            
+            emailLabel.setVisible(false);
+            editEmailTextField.setVisible(true);
+            editEmailTextField.setText(emailLabel.getText());
+        }else{
+            emailLabel.setText(editEmailTextField.getText());
+            editEmailTextField.setVisible(false);
+            emailLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_editEmailLabelMouseClicked
+
+    private void editMaritalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMaritalLabelMouseClicked
+        // TODO add your handling code here:
+        if(maritalStatusLabel.isVisible()){
+            
+            maritalStatusLabel.setVisible(false);
+            editMaritalTextField.setVisible(true);
+            editMaritalTextField.setText(maritalStatusLabel.getText());
+        }else{
+            maritalStatusLabel.setText(editMaritalTextField.getText());
+            editMaritalTextField.setVisible(false);
+            maritalStatusLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_editMaritalLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -354,6 +440,14 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private javax.swing.JLabel citizenshipLabel;
     private javax.swing.JLabel dateOfBirthConst;
     private javax.swing.JLabel dateOfBirthLabel;
+    private javax.swing.JLabel editAddressLabel;
+    private javax.swing.JTextField editAddressTextField;
+    private javax.swing.JLabel editCellLabel;
+    private javax.swing.JTextField editCellTextField;
+    private javax.swing.JLabel editEmailLabel;
+    private javax.swing.JTextField editEmailTextField;
+    private javax.swing.JLabel editMaritalLabel;
+    private javax.swing.JTextField editMaritalTextField;
     private javax.swing.JLabel emailConst;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel fatherNameConst;
@@ -365,13 +459,14 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JLabel idConst;
     private javax.swing.JLabel idlabel;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel maritalStatusConst;
-    private javax.swing.JLabel maritalStatusConst1;
+    private javax.swing.JLabel maritalStatusLabel;
     private javax.swing.JLabel motherNameConst;
     private javax.swing.JLabel motherNameLabel;
     private javax.swing.JPanel rightPanel;
+    private javax.swing.JLabel saveChangesLabel;
     private javax.swing.JLabel universityName;
-    private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }

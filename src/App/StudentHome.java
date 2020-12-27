@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class StudentHome extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminHome
+     * Creates new form
      */
     public StudentHome() {
         initComponents();
