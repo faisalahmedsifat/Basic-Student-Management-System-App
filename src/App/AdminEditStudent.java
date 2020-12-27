@@ -8,13 +8,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern; 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
  * @author ari13
  */
 public class AdminEditStudent extends javax.swing.JFrame {
-
+    
+    private boolean fetched_atleast_once = false;
+    private int current_fetched_id = -1;
+    private ArrayList<String> errors = new ArrayList<>();
+    
     /**
      * Creates new form AdminEditStudent
      */
@@ -61,11 +66,12 @@ public class AdminEditStudent extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         MaritalStatus = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        SubmitAddStudent = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
+        SubmitEditStudent = new javax.swing.JButton();
         addStudentSeparator = new javax.swing.JSeparator();
         editStudentSeparator = new javax.swing.JSeparator();
         assignStudentSeparator = new javax.swing.JSeparator();
+        FetchID = new javax.swing.JTextField();
+        FetchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +87,7 @@ public class AdminEditStudent extends javax.swing.JFrame {
         universityName.setText("X - Y - Z University");
 
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
+        rightPanel.setForeground(new java.awt.Color(255, 255, 255));
         addStudentSeparator.setVisible(false);
         editStudentSeparator.setVisible(false);
         assignStudentSeparator.setVisible(false);
@@ -133,15 +140,28 @@ public class AdminEditStudent extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Marital Status");
 
-        SubmitAddStudent.setText("Submit");
-        SubmitAddStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+        SubmitEditStudent.setText("Submit");
+        SubmitEditStudent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SubmitAddStudentMouseClicked(evt);
+                SubmitEditStudentMouseClicked(evt);
             }
         });
 
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("[CUR ID]");
+        addStudentSeparator.setBackground(new java.awt.Color(49, 19, 51));
+        addStudentSeparator.setForeground(new java.awt.Color(49, 19, 51));
+
+        editStudentSeparator.setBackground(new java.awt.Color(49, 19, 51));
+        editStudentSeparator.setForeground(new java.awt.Color(49, 19, 51));
+
+        assignStudentSeparator.setBackground(new java.awt.Color(49, 19, 51));
+        assignStudentSeparator.setForeground(new java.awt.Color(49, 19, 51));
+
+        FetchButton.setText("Fetch");
+        FetchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FetchButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
@@ -156,12 +176,6 @@ public class AdminEditStudent extends javax.swing.JFrame {
                         .addComponent(adminToStudentText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
                         .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SubmitAddStudent)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rightPanelLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +221,18 @@ public class AdminEditStudent extends javax.swing.JFrame {
                                         .addComponent(addStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(editStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(167, 167, 167)))))
+                                        .addGap(167, 167, 167))))
+                            .addGroup(rightPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
+                                        .addComponent(FetchID)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FetchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(FatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SubmitEditStudent)))))
                         .addGap(38, 38, 38)
                         .addComponent(assignStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
@@ -219,10 +244,11 @@ public class AdminEditStudent extends javax.swing.JFrame {
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adminToStudentText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adminLoginText, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel20))
+                    .addComponent(FetchID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FetchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,8 +290,8 @@ public class AdminEditStudent extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(MaritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
-                .addComponent(SubmitAddStudent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SubmitEditStudent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,8 +344,78 @@ public class AdminEditStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
 
-    private void SubmitAddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitAddStudentMouseClicked
-        // TODO add your handling code here:
+    private void FetchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FetchButtonMouseClicked
+        String id_need_to_fetch = FetchID.getText();        
+        try{
+            conn c1 = new conn();
+            
+            String query = "SELECT * FROM student_profile WHERE id = '" + id_need_to_fetch + "'";
+            ResultSet rs = c1.s.executeQuery(query);
+            
+            if(rs.next()){
+                // Update All Fields with information of id=id_need_to_fetch
+                fetch_all_fields_with_info_of(id_need_to_fetch);
+                fetched_atleast_once = true;
+                current_fetched_id = (int)Integer.parseInt(id_need_to_fetch);
+            }else{
+                JOptionPane.showMessageDialog(null, "No such student found with id=" + id_need_to_fetch + "!");
+            }
+            
+        }catch(Exception ae){
+             ae.printStackTrace();
+        }
+    }//GEN-LAST:event_FetchButtonMouseClicked
+
+    private void SubmitEditStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitEditStudentMouseClicked
+        if(fetched_atleast_once && current_fetched_id != -1){
+            if(all_are_valid()){
+                try{
+                conn c1 = new conn();
+                String query = "UPDATE student_profile " + 
+                       "SET `Name`='" +Name.getText()+ "', `Fathers Name`='" +FatherName.getText()+ "', `Mothers Name`='" +MothersName.getText()+ "',"+
+                        " `Phone`='" +Phone.getText()+ "', `Address`='" +Address.getText()+ "', `Email`='" +Email.getText()+ "',"+
+                        " `Date of Birth`='" +DOB.getText()+ "', `Gender`='" +Gender.getText()+ "',"+
+                        " `Citizenship`='" +Citizenship.getText()+ "', `Marital Status`='" +MaritalStatus.getText()+ "'"+
+                        " WHERE `id`="+current_fetched_id+"";
+                //JOptionPane.showMessageDialog(null, query);
+                c1.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Successfully edited information of id="+current_fetched_id+"!");
+                
+                // Reset the Whole GUI
+                current_fetched_id = -1;
+                errors.clear();
+                fetched_atleast_once = false;
+                String EmptyStringTemplate = "";
+                FetchID.setText(EmptyStringTemplate);
+                Name.setText(EmptyStringTemplate);
+                FatherName.setText(EmptyStringTemplate);
+                MothersName.setText(EmptyStringTemplate);
+                Phone.setText(EmptyStringTemplate);
+                Address.setText(EmptyStringTemplate);
+                Email.setText(EmptyStringTemplate);
+                DOB.setText(EmptyStringTemplate);
+                Gender.setText(EmptyStringTemplate);
+                Citizenship.setText(EmptyStringTemplate);
+                MaritalStatus.setText(EmptyStringTemplate);
+                
+                
+            }catch(Exception ae){
+                 ae.printStackTrace();
+            }
+            }else{
+                // Throw error
+                String errorMessage = "Error! Correctly fill the following fields: ";
+                for (String s:errors) {
+                    errorMessage = errorMessage + s + ",";
+                }
+                JOptionPane.showMessageDialog(null, errorMessage.substring(0, errorMessage.length() - 1));
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "You need to fetch a student information using id and fetch button!");
+        }
+    }//GEN-LAST:event_SubmitEditStudentMouseClicked
+
+    boolean all_are_valid(){
         String name = Name.getText();
         String fatherName = FatherName.getText();
         String mothersName = MothersName.getText();
@@ -331,61 +427,77 @@ public class AdminEditStudent extends javax.swing.JFrame {
         String citizenship = Citizenship.getText();
         String maritalStatus = MaritalStatus.getText();
         boolean all_valid = true;
-        ArrayList<String> arr = new ArrayList<>();
+        errors.clear();
         if(!isValidName(name)){
             all_valid = false;
-            arr.add("Name");
+            errors.add("Name");
         }
         if(!isValidName(fatherName)){
             all_valid = false;
-            arr.add("Fathers Name");
+            errors.add("Fathers Name");
         }
         if(!isValidName(mothersName)){
             all_valid = false;
-            arr.add("Mothers Name");
+            errors.add("Mothers Name");
         }
         if(!isValidPhone(phoneNo)){
             all_valid = false;
-            arr.add("Phone No");
+            errors.add("Phone No");
         }
         if(!isValidName(address)){
             all_valid = false;
-            arr.add("Address");
+            errors.add("Address");
         }
         if(!isValidEmail(email)){
             all_valid = false;
-            arr.add("Email");
+            errors.add("Email");
         }
         if(!isValidDOB(dateOfBirth)){
             all_valid = false;
-            arr.add("Date of Birth");
+            errors.add("Date of Birth");
         }
         if(!isValidGender(gender)){
             all_valid = false;
-            arr.add("Gender");
+            errors.add("Gender");
         }
         if(!isValidName(citizenship)){
             all_valid = false;
-            arr.add("Citizenship");
+            errors.add("Citizenship");
         }
         if(!isValidName(maritalStatus)){
             all_valid = false;
-            arr.add("Marital Status");
+            errors.add("Marital Status");
         }
-
-        if(all_valid){
-            // Insert
-            JOptionPane.showMessageDialog(null, "All Okay");
-        }else{
-            // Throw error
-            String errorMessage = "Error! Correctly fill the following fields: ";
-            for (String s:arr) {
-                errorMessage = errorMessage + s + ",";
-            }
-            JOptionPane.showMessageDialog(null, errorMessage);
+        return all_valid;
+    }
+    
+    void fetch_all_fields_with_info_of(String idx){
+        int id = Integer.parseInt(idx);
+        try{
+            conn c1 = new conn();
+            
+            String query = "SELECT * FROM student_profile WHERE id = '" + id + "'";
+            ResultSet rs = c1.s.executeQuery(query);
+            rs.next();
+           
+            Name.setText(rs.getString("name"));
+            FatherName.setText(rs.getString("Fathers Name"));
+            MothersName.setText(rs.getString("Mothers Name"));
+            Phone.setText(rs.getString("Phone"));
+            Address.setText(rs.getString("Address"));
+            Email.setText(rs.getString("Email"));
+            DOB.setText(rs.getString("Date of Birth"));
+            Gender.setText(rs.getString("Gender"));
+            Citizenship.setText(rs.getString("Citizenship"));
+            MaritalStatus.setText(rs.getString("Marital Status"));
+            
+            JOptionPane.showMessageDialog(null, "Successfully Fetched!");
+            
+        }catch(Exception ae){
+             ae.printStackTrace();
         }
-    }//GEN-LAST:event_SubmitAddStudentMouseClicked
-
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -454,12 +566,14 @@ public class AdminEditStudent extends javax.swing.JFrame {
     private javax.swing.JTextField DOB;
     private javax.swing.JTextField Email;
     private javax.swing.JTextField FatherName;
+    private javax.swing.JButton FetchButton;
+    private javax.swing.JTextField FetchID;
     private javax.swing.JTextField Gender;
     private javax.swing.JTextField MaritalStatus;
     private javax.swing.JTextField MothersName;
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Phone;
-    private javax.swing.JButton SubmitAddStudent;
+    private javax.swing.JButton SubmitEditStudent;
     private javax.swing.JSeparator addStudentSeparator;
     private javax.swing.JLabel adminLoginText;
     private javax.swing.JLabel adminToStudentText;
@@ -471,7 +585,6 @@ public class AdminEditStudent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
