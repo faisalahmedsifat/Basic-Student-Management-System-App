@@ -5,7 +5,12 @@
  */
 package App;
 
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 /**
  *
@@ -34,9 +39,9 @@ public class LoginPage extends javax.swing.JFrame {
         universityName = new javax.swing.JLabel();
         rightAdminPanel = new javax.swing.JPanel();
         adminLoginText = new javax.swing.JLabel();
-        adminEmailText = new javax.swing.JLabel();
-        adminEmailTextField = new javax.swing.JTextField();
-        adminEmailSeparator = new javax.swing.JSeparator();
+        adminUsernameText = new javax.swing.JLabel();
+        adminUserNameTextField = new javax.swing.JTextField();
+        adminUsernameSeparator = new javax.swing.JSeparator();
         adminPasswordText = new javax.swing.JLabel();
         adminPasswordSeparator = new javax.swing.JSeparator();
         adminPasswordField = new javax.swing.JPasswordField();
@@ -45,9 +50,9 @@ public class LoginPage extends javax.swing.JFrame {
         adminToStudentSeparator = new javax.swing.JSeparator();
         rightStudentPanel = new javax.swing.JPanel();
         studentLoginText = new javax.swing.JLabel();
-        studentEmailText = new javax.swing.JLabel();
-        studentEmailTextField = new javax.swing.JTextField();
-        studentEmailSeparator = new javax.swing.JSeparator();
+        studentIdText = new javax.swing.JLabel();
+        studentIdTextField = new javax.swing.JTextField();
+        studentUsernameSeparator = new javax.swing.JSeparator();
         studentPasswordText = new javax.swing.JLabel();
         studentPasswordSeparator = new javax.swing.JSeparator();
         studentPasswordField = new javax.swing.JPasswordField();
@@ -56,6 +61,7 @@ public class LoginPage extends javax.swing.JFrame {
         studentToAdminSeparator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 875, 491));
         setLocation(new java.awt.Point(200, 200));
         setPreferredSize(new java.awt.Dimension(875, 491));
         setSize(new java.awt.Dimension(875, 491));
@@ -101,21 +107,21 @@ public class LoginPage extends javax.swing.JFrame {
         adminLoginText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_database_administrator_21px.png"))); // NOI18N
         adminLoginText.setText("Admin Login");
 
-        adminEmailText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        adminEmailText.setForeground(new java.awt.Color(204, 204, 204));
-        adminEmailText.setText("Username");
+        adminUsernameText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        adminUsernameText.setForeground(new java.awt.Color(204, 204, 204));
+        adminUsernameText.setText("Username");
 
-        adminEmailTextField.setBackground(new java.awt.Color(49, 19, 51));
-        adminEmailTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        adminEmailTextField.setForeground(new java.awt.Color(255, 255, 255));
-        adminEmailTextField.setBorder(null);
-        adminEmailTextField.addActionListener(new java.awt.event.ActionListener() {
+        adminUserNameTextField.setBackground(new java.awt.Color(49, 19, 51));
+        adminUserNameTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        adminUserNameTextField.setForeground(new java.awt.Color(255, 255, 255));
+        adminUserNameTextField.setBorder(null);
+        adminUserNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminEmailTextFieldActionPerformed(evt);
+                adminUserNameTextFieldActionPerformed(evt);
             }
         });
 
-        adminEmailSeparator.setBackground(new java.awt.Color(204, 204, 204));
+        adminUsernameSeparator.setBackground(new java.awt.Color(204, 204, 204));
 
         adminPasswordText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         adminPasswordText.setForeground(new java.awt.Color(204, 204, 204));
@@ -160,13 +166,13 @@ public class LoginPage extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addGroup(rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(adminPasswordSeparator)
-                            .addComponent(adminEmailSeparator)
-                            .addComponent(adminEmailTextField)
+                            .addComponent(adminUsernameSeparator)
+                            .addComponent(adminUserNameTextField)
                             .addComponent(adminPasswordField)
                             .addGroup(rightAdminPanelLayout.createSequentialGroup()
                                 .addGroup(rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(rightAdminPanelLayout.createSequentialGroup()
-                                        .addComponent(adminEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(adminUsernameText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(143, 143, 143))
                                     .addGroup(rightAdminPanelLayout.createSequentialGroup()
                                         .addComponent(adminPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,25 +194,25 @@ public class LoginPage extends javax.swing.JFrame {
             rightAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightAdminPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(adminToStudentText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(adminToStudentText, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminToStudentSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
+                .addComponent(adminToStudentSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(adminLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addGap(50, 50, 50)
-                .addComponent(adminEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(adminUsernameText, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(adminUserNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminEmailSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
+                .addComponent(adminUsernameSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(adminPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(adminPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(adminPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(adminPasswordSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
+                .addComponent(adminPasswordSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
-                .addComponent(adminLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(adminLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addGap(105, 105, 105))
         );
 
@@ -224,21 +230,21 @@ public class LoginPage extends javax.swing.JFrame {
         studentLoginText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_read_online_21px.png"))); // NOI18N
         studentLoginText.setText("Student Login");
 
-        studentEmailText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        studentEmailText.setForeground(new java.awt.Color(204, 204, 204));
-        studentEmailText.setText("ID");
+        studentIdText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        studentIdText.setForeground(new java.awt.Color(204, 204, 204));
+        studentIdText.setText("ID");
 
-        studentEmailTextField.setBackground(new java.awt.Color(49, 19, 51));
-        studentEmailTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        studentEmailTextField.setForeground(new java.awt.Color(255, 255, 255));
-        studentEmailTextField.setBorder(null);
-        studentEmailTextField.addActionListener(new java.awt.event.ActionListener() {
+        studentIdTextField.setBackground(new java.awt.Color(49, 19, 51));
+        studentIdTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        studentIdTextField.setForeground(new java.awt.Color(255, 255, 255));
+        studentIdTextField.setBorder(null);
+        studentIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentEmailTextFieldActionPerformed(evt);
+                studentIdTextFieldActionPerformed(evt);
             }
         });
 
-        studentEmailSeparator.setBackground(new java.awt.Color(204, 204, 204));
+        studentUsernameSeparator.setBackground(new java.awt.Color(204, 204, 204));
 
         studentPasswordText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         studentPasswordText.setForeground(new java.awt.Color(204, 204, 204));
@@ -256,6 +262,11 @@ public class LoginPage extends javax.swing.JFrame {
         studentLoginButton.setForeground(new java.awt.Color(204, 204, 204));
         studentLoginButton.setText("Login as student");
         studentLoginButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        studentLoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentLoginButtonMouseClicked(evt);
+            }
+        });
 
         studentToAdminText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         studentToAdminText.setForeground(new java.awt.Color(204, 204, 204));
@@ -283,14 +294,14 @@ public class LoginPage extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addGroup(rightStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(studentPasswordSeparator)
-                            .addComponent(studentEmailSeparator)
+                            .addComponent(studentUsernameSeparator)
                             .addGroup(rightStudentPanelLayout.createSequentialGroup()
-                                .addComponent(studentEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(studentIdText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(262, 262, 262))
                             .addGroup(rightStudentPanelLayout.createSequentialGroup()
                                 .addComponent(studentPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(272, 272, 272))
-                            .addComponent(studentEmailTextField)
+                            .addComponent(studentIdTextField)
                             .addGroup(rightStudentPanelLayout.createSequentialGroup()
                                 .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(119, 119, 119))
@@ -314,23 +325,23 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(studentToAdminText, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(studentToAdminSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(studentToAdminSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(50, 50, 50)
-                .addComponent(studentEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(studentIdText, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(studentEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(studentIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(studentEmailSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(studentUsernameSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(studentPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(studentPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(studentPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(studentPasswordSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(studentPasswordSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
-                .addComponent(studentLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addComponent(studentLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addGap(105, 105, 105))
         );
 
@@ -358,13 +369,13 @@ public class LoginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adminEmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminEmailTextFieldActionPerformed
+    private void adminUserNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUserNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_adminEmailTextFieldActionPerformed
+    }//GEN-LAST:event_adminUserNameTextFieldActionPerformed
 
-    private void studentEmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEmailTextFieldActionPerformed
+    private void studentIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_studentEmailTextFieldActionPerformed
+    }//GEN-LAST:event_studentIdTextFieldActionPerformed
 
     private void adminToStudentTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminToStudentTextMouseClicked
         // TODO add your handling code here:
@@ -398,7 +409,7 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             conn c1 = new conn();
-            String username = this.adminEmailTextField.getText();
+            String username = this.adminUserNameTextField.getText();
             String password = String.valueOf(this.adminPasswordField.getPassword());
             
             String query = "SELECT * FROM admin_login WHERE username = '" + username + "' and password = '" + password + "'";
@@ -422,11 +433,45 @@ public class LoginPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Invalid Credentials!");
             }
             
-        }catch(Exception ae){
-             ae.printStackTrace();
+        }catch(HeadlessException | SQLException ae){
+            ae.printStackTrace();
         }
        
     }//GEN-LAST:event_adminLoginButtonActionPerformed
+
+    private void studentLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentLoginButtonMouseClicked
+        // TODO add your handling code
+        try{
+            conn c2 = new conn();
+            int id = Integer.parseInt(this.studentIdTextField.getText());
+            String password = String.valueOf(this.studentPasswordField.getPassword());
+            
+            String queryLogin = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
+            
+            ResultSet loginResults = c2.s.executeQuery(queryLogin);
+            String queryDetails = "SELECT * FROM student_profile WHERE ID = " + id;
+            if(loginResults.next()){
+                // Logged in
+                
+                // Set The Credentials in the Current Session
+                CurrentSession.setIsLoggedIn(true);
+                CurrentSession.setID(id);
+               
+                // Open The Admin Panel
+                 
+                new StudentHome().setVisible(true);
+                dispose();
+                
+            }else{
+                // Invalid Username or Password
+                JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+            }
+            
+        }catch(HeadlessException | SQLException ae){
+            ae.printStackTrace();
+        }
+       
+    }//GEN-LAST:event_studentLoginButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -465,9 +510,6 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator adminEmailSeparator;
-    private javax.swing.JLabel adminEmailText;
-    private javax.swing.JTextField adminEmailTextField;
     private javax.swing.JButton adminLoginButton;
     private javax.swing.JLabel adminLoginText;
     private javax.swing.JPasswordField adminPasswordField;
@@ -475,13 +517,15 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel adminPasswordText;
     private javax.swing.JSeparator adminToStudentSeparator;
     private javax.swing.JLabel adminToStudentText;
+    private javax.swing.JTextField adminUserNameTextField;
+    private javax.swing.JSeparator adminUsernameSeparator;
+    private javax.swing.JLabel adminUsernameText;
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightAdminPanel;
     private javax.swing.JPanel rightStudentPanel;
-    private javax.swing.JSeparator studentEmailSeparator;
-    private javax.swing.JLabel studentEmailText;
-    private javax.swing.JTextField studentEmailTextField;
+    private javax.swing.JLabel studentIdText;
+    private javax.swing.JTextField studentIdTextField;
     private javax.swing.JButton studentLoginButton;
     private javax.swing.JLabel studentLoginText;
     private javax.swing.JPasswordField studentPasswordField;
@@ -489,6 +533,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel studentPasswordText;
     private javax.swing.JSeparator studentToAdminSeparator;
     private javax.swing.JLabel studentToAdminText;
+    private javax.swing.JSeparator studentUsernameSeparator;
     private javax.swing.JLabel universityName;
     // End of variables declaration//GEN-END:variables
 }

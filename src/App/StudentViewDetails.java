@@ -16,8 +16,6 @@ public class StudentViewDetails extends javax.swing.JFrame {
     public StudentViewDetails() {
         initComponents();
         
-        // Set the username to the current sessions username
-        saveChangesLabel.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
     }
@@ -310,7 +308,7 @@ public class StudentViewDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );

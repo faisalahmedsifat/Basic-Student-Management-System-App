@@ -46,7 +46,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="viewDetailsSeparator.setVisible(false);&#xa;updateDetailsSeparator.setVisible(false);&#xa;ExitButtonSeparator.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="viewDetailsSeparator.setVisible(false);&#xa;ExitButtonSeparator.setVisible(false);"/>
       </AuxValues>
 
       <Layout>
@@ -63,10 +63,8 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="viewDetailsSeparator" alignment="0" max="32767" attributes="0"/>
-                              <Component id="viewDetailsButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="updateDetailsButton" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="viewDetailsButton" alignment="0" pref="260" max="32767" attributes="0"/>
                               <Component id="ExitButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="updateDetailsSeparator" alignment="0" max="32767" attributes="0"/>
                               <Component id="ExitButtonSeparator" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -85,17 +83,13 @@
                   <Component id="studentLoginText" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="viewDetailsButton" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="viewDetailsSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="updateDetailsButton" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="updateDetailsSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Component id="ExitButton" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ExitButtonSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,6 +128,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f1" green="f0" red="ec" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/App/icons/icons8_more_details_25px_2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="View Details"/>
           </Properties>
           <Events>
@@ -144,24 +141,6 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="viewDetailsSeparator">
         </Component>
-        <Component class="javax.swing.JLabel" name="updateDetailsButton">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f1" green="f0" red="ec" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Update Details"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateDetailsButtonMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateDetailsButtonMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateDetailsButtonMouseExited"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="updateDetailsSeparator">
-        </Component>
         <Component class="javax.swing.JLabel" name="ExitButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -169,6 +148,9 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f1" green="f0" red="ec" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/App/icons/icons8_exit_25px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="EXIT"/>
           </Properties>

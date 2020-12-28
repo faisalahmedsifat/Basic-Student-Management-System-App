@@ -42,6 +42,7 @@ public class WelcomePage extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 875, 491));
         setLocation(new java.awt.Point(200, 200));
         setSize(new java.awt.Dimension(0, 0));
 

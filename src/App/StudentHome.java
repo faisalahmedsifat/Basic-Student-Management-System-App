@@ -19,10 +19,10 @@ public class StudentHome extends javax.swing.JFrame {
         initComponents();
         
         // Set the username to the current sessions username
-        welcomeText.setText("Hello," + CurrentSession.getUsername() + "");
+//        welcomeText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
-        JOptionPane.showMessageDialog(null, "Successfully logged in as "+ CurrentSession.getUsername() +"");
+        JOptionPane.showMessageDialog(null, "Successfully logged in as student id = "+ CurrentSession.getID());
     }
 
     /**
@@ -39,8 +39,6 @@ public class StudentHome extends javax.swing.JFrame {
         studentLoginText = new javax.swing.JLabel();
         viewDetailsButton = new javax.swing.JLabel();
         viewDetailsSeparator = new javax.swing.JSeparator();
-        updateDetailsButton = new javax.swing.JLabel();
-        updateDetailsSeparator = new javax.swing.JSeparator();
         ExitButton = new javax.swing.JLabel();
         ExitButtonSeparator = new javax.swing.JSeparator();
         leftPanel = new javax.swing.JPanel();
@@ -51,7 +49,6 @@ public class StudentHome extends javax.swing.JFrame {
 
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
         viewDetailsSeparator.setVisible(false);
-        updateDetailsSeparator.setVisible(false);
         ExitButtonSeparator.setVisible(false);
 
         welcomeText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -65,6 +62,7 @@ public class StudentHome extends javax.swing.JFrame {
 
         viewDetailsButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         viewDetailsButton.setForeground(new java.awt.Color(236, 240, 241));
+        viewDetailsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_more_details_25px_2.png"))); // NOI18N
         viewDetailsButton.setText("View Details");
         viewDetailsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,23 +76,9 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
-        updateDetailsButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        updateDetailsButton.setForeground(new java.awt.Color(236, 240, 241));
-        updateDetailsButton.setText("Update Details");
-        updateDetailsButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateDetailsButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                updateDetailsButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                updateDetailsButtonMouseExited(evt);
-            }
-        });
-
         ExitButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         ExitButton.setForeground(new java.awt.Color(236, 240, 241));
+        ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_exit_25px.png"))); // NOI18N
         ExitButton.setText("EXIT");
         ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,10 +106,8 @@ public class StudentHome extends javax.swing.JFrame {
                     .addGroup(rightPanelLayout.createSequentialGroup()
                         .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(viewDetailsSeparator)
-                            .addComponent(viewDetailsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(updateDetailsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(viewDetailsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(ExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(updateDetailsSeparator)
                             .addComponent(ExitButtonSeparator))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -139,17 +121,13 @@ public class StudentHome extends javax.swing.JFrame {
                 .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(viewDetailsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewDetailsSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(updateDetailsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(updateDetailsSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(66, 66, 66)
                 .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ExitButtonSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124))
+                .addGap(145, 145, 145))
         );
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,12 +184,9 @@ public class StudentHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsButtonMouseClicked
-
+        new StudentViewDetails().setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_viewDetailsButtonMouseClicked
-
-    private void updateDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateDetailsButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateDetailsButtonMouseClicked
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
  
@@ -227,16 +202,6 @@ public class StudentHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewDetailsSeparator.setVisible(false);
     }//GEN-LAST:event_viewDetailsButtonMouseExited
-
-    private void updateDetailsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateDetailsButtonMouseEntered
-        // TODO add your handling code here:
-        updateDetailsSeparator.setVisible(true);
-    }//GEN-LAST:event_updateDetailsButtonMouseEntered
-
-    private void updateDetailsButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateDetailsButtonMouseExited
-        // TODO add your handling code here:
-        updateDetailsSeparator.setVisible(false);
-    }//GEN-LAST:event_updateDetailsButtonMouseExited
 
     private void ExitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseEntered
         ExitButtonSeparator.setVisible(true);
@@ -292,8 +257,6 @@ public class StudentHome extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JLabel studentLoginText;
     private javax.swing.JLabel universityName;
-    private javax.swing.JLabel updateDetailsButton;
-    private javax.swing.JSeparator updateDetailsSeparator;
     private javax.swing.JLabel viewDetailsButton;
     private javax.swing.JSeparator viewDetailsSeparator;
     private javax.swing.JLabel welcomeText;

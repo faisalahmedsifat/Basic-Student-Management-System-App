@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
+      <Rectangle value="[200, 200, 875, 491]"/>
+    </Property>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
       <Point value="[200, 200]"/>
     </Property>
@@ -137,13 +140,13 @@
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="adminPasswordSeparator" max="32767" attributes="0"/>
-                              <Component id="adminEmailSeparator" alignment="0" max="32767" attributes="0"/>
-                              <Component id="adminEmailTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="adminUsernameSeparator" alignment="0" max="32767" attributes="0"/>
+                              <Component id="adminUserNameTextField" alignment="0" max="32767" attributes="0"/>
                               <Component id="adminPasswordField" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="adminEmailText" max="32767" attributes="0"/>
+                                          <Component id="adminUsernameText" max="32767" attributes="0"/>
                                           <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -177,25 +180,25 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="adminToStudentText" pref="25" max="32767" attributes="0"/>
+                  <Component id="adminToStudentText" pref="23" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="adminToStudentSeparator" pref="11" max="32767" attributes="0"/>
+                  <Component id="adminToStudentSeparator" pref="9" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Component id="adminLoginText" pref="41" max="32767" attributes="0"/>
+                  <Component id="adminLoginText" pref="39" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="adminEmailText" pref="25" max="32767" attributes="0"/>
+                  <Component id="adminUsernameText" pref="23" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="adminEmailTextField" pref="25" max="32767" attributes="0"/>
+                  <Component id="adminUserNameTextField" pref="23" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="adminEmailSeparator" pref="11" max="32767" attributes="0"/>
+                  <Component id="adminUsernameSeparator" pref="9" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="adminPasswordText" pref="25" max="32767" attributes="0"/>
+                  <Component id="adminPasswordText" pref="23" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="adminPasswordField" pref="25" max="32767" attributes="0"/>
+                  <Component id="adminPasswordField" pref="23" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="adminPasswordSeparator" pref="11" max="32767" attributes="0"/>
+                  <Component id="adminPasswordSeparator" pref="7" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="adminLoginButton" pref="30" max="32767" attributes="0"/>
+                  <Component id="adminLoginButton" pref="28" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -216,7 +219,7 @@
             <Property name="text" type="java.lang.String" value="Admin Login"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="adminEmailText">
+        <Component class="javax.swing.JLabel" name="adminUsernameText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="12" style="1"/>
@@ -227,7 +230,7 @@
             <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="adminEmailTextField">
+        <Component class="javax.swing.JTextField" name="adminUserNameTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="13" red="31" type="rgb"/>
@@ -243,10 +246,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminEmailTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminUserNameTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JSeparator" name="adminEmailSeparator">
+        <Component class="javax.swing.JSeparator" name="adminUsernameSeparator">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -354,16 +357,16 @@
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="studentPasswordSeparator" alignment="0" max="32767" attributes="0"/>
-                              <Component id="studentEmailSeparator" alignment="0" max="32767" attributes="0"/>
+                              <Component id="studentUsernameSeparator" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="studentEmailText" max="32767" attributes="0"/>
+                                  <Component id="studentIdText" max="32767" attributes="0"/>
                                   <EmptySpace min="262" pref="262" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="studentPasswordText" max="32767" attributes="0"/>
                                   <EmptySpace min="272" pref="272" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="studentEmailTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="studentIdTextField" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="studentLoginText" max="32767" attributes="0"/>
                                   <EmptySpace min="119" pref="119" max="-2" attributes="0"/>
@@ -397,23 +400,23 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="studentToAdminText" min="-2" pref="18" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="studentToAdminSeparator" pref="14" max="32767" attributes="0"/>
+                  <Component id="studentToAdminSeparator" pref="11" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Component id="studentLoginText" pref="33" max="32767" attributes="0"/>
+                  <Component id="studentLoginText" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="studentEmailText" pref="23" max="32767" attributes="0"/>
+                  <Component id="studentIdText" pref="20" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="studentEmailTextField" pref="29" max="32767" attributes="0"/>
+                  <Component id="studentIdTextField" pref="26" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="studentEmailSeparator" pref="14" max="32767" attributes="0"/>
+                  <Component id="studentUsernameSeparator" pref="11" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="studentPasswordText" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="studentPasswordField" pref="29" max="32767" attributes="0"/>
+                  <Component id="studentPasswordField" pref="26" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="studentPasswordSeparator" pref="14" max="32767" attributes="0"/>
+                  <Component id="studentPasswordSeparator" pref="11" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="studentLoginButton" pref="33" max="32767" attributes="0"/>
+                  <Component id="studentLoginButton" pref="30" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -434,7 +437,7 @@
             <Property name="text" type="java.lang.String" value="Student Login"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="studentEmailText">
+        <Component class="javax.swing.JLabel" name="studentIdText">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="12" style="1"/>
@@ -445,7 +448,7 @@
             <Property name="text" type="java.lang.String" value="ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="studentEmailTextField">
+        <Component class="javax.swing.JTextField" name="studentIdTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="13" red="31" type="rgb"/>
@@ -461,10 +464,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentEmailTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentIdTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JSeparator" name="studentEmailSeparator">
+        <Component class="javax.swing.JSeparator" name="studentUsernameSeparator">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -523,6 +526,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="studentLoginButtonMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="studentToAdminText">
           <Properties>
