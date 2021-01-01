@@ -47,6 +47,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         universityName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 875, 491));
 
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
         rightPanel.setLayout(null);

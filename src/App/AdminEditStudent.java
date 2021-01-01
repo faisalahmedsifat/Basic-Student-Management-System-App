@@ -74,6 +74,7 @@ public class AdminEditStudent extends javax.swing.JFrame {
         FetchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 875, 491));
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 

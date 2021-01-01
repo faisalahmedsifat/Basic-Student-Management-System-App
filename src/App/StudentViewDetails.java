@@ -5,20 +5,30 @@
  */
 package App;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  * @author Sifat
  */
 public class StudentViewDetails extends javax.swing.JFrame {
-
+    private int id = CurrentSession.getID();
+    private ArrayList<String> errors = new ArrayList();
     /**
      * Creates new form
      */
     public StudentViewDetails() {
         initComponents();
-        
-        
-        // Show the Successful Login Prompt
+        welcomeText.setText("Welcome, ID = "+CurrentSession.getID());
+        scanAllDetails();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +40,7 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         rightPanel = new javax.swing.JPanel();
-        saveChangesLabel = new javax.swing.JLabel();
+        refreshLabel = new javax.swing.JLabel();
         fullNameConst = new javax.swing.JLabel();
         idConst = new javax.swing.JLabel();
         dateOfBirthConst = new javax.swing.JLabel();
@@ -40,7 +50,7 @@ public class StudentViewDetails extends javax.swing.JFrame {
         addressConst = new javax.swing.JLabel();
         cellPhoneConst = new javax.swing.JLabel();
         fullNameLabel = new javax.swing.JLabel();
-        idlabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
         dateOfBirthLabel = new javax.swing.JLabel();
         fatherNameLabel = new javax.swing.JLabel();
         motherNameLabel = new javax.swing.JLabel();
@@ -62,11 +72,14 @@ public class StudentViewDetails extends javax.swing.JFrame {
         editAddressTextField = new javax.swing.JTextField();
         editEmailTextField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        welcomeText = new javax.swing.JLabel();
+        saveChangesLabel = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 875, 491));
 
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
         rightPanel.setLayout(null);
@@ -75,11 +88,17 @@ public class StudentViewDetails extends javax.swing.JFrame {
         editEmailTextField.setVisible(false);
         editAddressTextField.setVisible(false);
 
-        saveChangesLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        saveChangesLabel.setForeground(new java.awt.Color(236, 240, 241));
-        saveChangesLabel.setText("Click Here to save changes");
-        rightPanel.add(saveChangesLabel);
-        saveChangesLabel.setBounds(450, 50, 176, 31);
+        refreshLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        refreshLabel.setForeground(new java.awt.Color(236, 240, 241));
+        refreshLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_refresh_25px.png"))); // NOI18N
+        refreshLabel.setText("Refresh");
+        refreshLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(refreshLabel);
+        refreshLabel.setBounds(20, 20, 176, 30);
 
         fullNameConst.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         fullNameConst.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,11 +154,11 @@ public class StudentViewDetails extends javax.swing.JFrame {
         rightPanel.add(fullNameLabel);
         fullNameLabel.setBounds(185, 127, 416, 24);
 
-        idlabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        idlabel.setForeground(new java.awt.Color(255, 255, 255));
-        idlabel.setText("Hello");
-        rightPanel.add(idlabel);
-        idlabel.setBounds(185, 93, 416, 16);
+        idLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(255, 255, 255));
+        idLabel.setText("Hello");
+        rightPanel.add(idLabel);
+        idLabel.setBounds(185, 93, 416, 16);
 
         dateOfBirthLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         dateOfBirthLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,6 +286,29 @@ public class StudentViewDetails extends javax.swing.JFrame {
         rightPanel.add(jSeparator1);
         jSeparator1.setBounds(450, 70, 160, 10);
 
+        welcomeText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        welcomeText.setForeground(new java.awt.Color(236, 240, 241));
+        welcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeText.setText("Welcome, ");
+        welcomeText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                welcomeTextMouseClicked(evt);
+            }
+        });
+        rightPanel.add(welcomeText);
+        welcomeText.setBounds(450, 10, 176, 31);
+
+        saveChangesLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        saveChangesLabel.setForeground(new java.awt.Color(236, 240, 241));
+        saveChangesLabel.setText("Click Here to save changes");
+        saveChangesLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveChangesLabelMouseClicked(evt);
+            }
+        });
+        rightPanel.add(saveChangesLabel);
+        saveChangesLabel.setBounds(450, 50, 176, 31);
+
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -321,6 +363,76 @@ public class StudentViewDetails extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void scanAllDetails(){
+        try {
+            conn c = new conn();
+            String query = "SELECT * FROM student_profile WHERE id = '" + id + "'";
+            ResultSet rs = c.s.executeQuery(query);
+            
+            rs.next();
+            idLabel.setText(rs.getString(id));
+            fullNameLabel.setText(rs.getString("name"));
+            fatherNameLabel.setText(rs.getString("Fathers Name"));
+            motherNameLabel.setText(rs.getString("Mothers Name"));
+            cellPhoneLabel.setText(rs.getString("Phone"));
+            addressLabel.setText(rs.getString("Address"));
+            emailLabel.setText(rs.getString("Email"));
+            dateOfBirthLabel.setText(rs.getString("Date of Birth"));
+            genderLabel.setText(rs.getString("Gender"));
+            citizenshipLabel.setText(rs.getString("Citizenship"));
+            maritalStatusLabel.setText(rs.getString("Marital Status"));
+            // Show the Successful Login Prompt
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    boolean allValid(){
+        
+        String phoneNo = cellPhoneLabel.getText();
+        String address = addressLabel.getText();
+        String email = emailLabel.getText();
+        String maritalStatus = maritalStatusLabel.getText();
+        
+        boolean all_valid = true;
+        errors.clear();
+        
+        if(!isValidPhone(phoneNo)){
+            all_valid = false;
+            errors.add("Phone No");
+        }
+        if(!isValidName(address)){
+            all_valid = false;
+            errors.add("Address");
+        }
+        if(!isValidEmail(email)){
+            all_valid = false;
+            errors.add("Email");
+        }
+        if(!isValidName(maritalStatus)){
+            all_valid = false;
+            errors.add("Marital Status");
+        }
+        return all_valid;
+    }
+    
+    public boolean isValidName(String name){
+        return (name.length() > 0);
+    }
+    
+    public boolean isValidPhone(String phone){
+        return (phone.length() >= 10);
+    }
+    
+    public boolean isValidEmail(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+        return ((Pattern.compile(emailRegex).matcher(email).matches()) && (email != null)); 
+    }
+    
     private void editCellLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCellLabelMouseClicked
         // TODO add your handling code here:
         if(cellPhoneLabel.isVisible()){
@@ -377,6 +489,42 @@ public class StudentViewDetails extends javax.swing.JFrame {
             maritalStatusLabel.setVisible(true);
         }
     }//GEN-LAST:event_editMaritalLabelMouseClicked
+
+    private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
+        // TODO add your handling code here:
+        scanAllDetails();
+        JOptionPane.showMessageDialog(null,"Succesfully Refreshed");
+    }//GEN-LAST:event_refreshLabelMouseClicked
+
+    private void saveChangesLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveChangesLabelMouseClicked
+        // TODO add your handling code here:
+        if(allValid()){
+                try{
+                conn c1 = new conn();
+                String query = "UPDATE student_profile " + 
+                       "SET `Phone`='" +cellPhoneLabel.getText()+ "', `Address`='" +addressLabel.getText()+ "', `Email`='" +emailLabel.getText()+ "',"+"`Marital Status`='" +maritalStatusLabel.getText()+ "'"+
+                        " WHERE `ID`="+id+"";
+                //JOptionPane.showMessageDialog(null, query);
+                c1.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(welcomeText, "Saved Successfully");
+                
+                
+            }catch(Exception ae){
+                 ae.printStackTrace();
+            }
+            }else{
+                // Throw error
+                String errorMessage = "Error! Correctly fill the following fields: ";
+                for (String s:errors) {
+                    errorMessage = errorMessage + s + ",";
+                }
+                JOptionPane.showMessageDialog(null, errorMessage.substring(0, errorMessage.length() - 1));
+            }
+    }//GEN-LAST:event_saveChangesLabelMouseClicked
+
+    private void welcomeTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeTextMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_welcomeTextMouseClicked
 
     /**
      * @param args the command line arguments
@@ -456,15 +604,17 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JLabel idConst;
-    private javax.swing.JLabel idlabel;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel maritalStatusConst;
     private javax.swing.JLabel maritalStatusLabel;
     private javax.swing.JLabel motherNameConst;
     private javax.swing.JLabel motherNameLabel;
+    private javax.swing.JLabel refreshLabel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JLabel saveChangesLabel;
     private javax.swing.JLabel universityName;
+    private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }
