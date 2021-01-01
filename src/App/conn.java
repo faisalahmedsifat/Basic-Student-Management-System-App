@@ -18,7 +18,7 @@ public class conn {
     }
     
     //Debugging Option
-    public static void main(String[] args) {
-        new conn();
-    }
+//    public static void main(String[] args) {
+//        new conn();
+//    }
 }
