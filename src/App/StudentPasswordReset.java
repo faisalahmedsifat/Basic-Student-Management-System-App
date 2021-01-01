@@ -15,7 +15,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
      */
     public StudentPasswordReset() {
         initComponents();
-        
+        welcomeText.setText("Welcome, ID = "+CurrentSession.getID());
         
         // Show the Successful Login Prompt
     }
@@ -30,7 +30,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
     private void initComponents() {
 
         rightPanel = new javax.swing.JPanel();
-        welcomeLabel = new javax.swing.JLabel();
+        welcomeText = new javax.swing.JLabel();
         confirmPasswordLabel = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
         welcomeSeparator = new javax.swing.JSeparator();
@@ -45,6 +45,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
+        backButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 200, 875, 491));
@@ -52,12 +53,12 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         rightPanel.setBackground(new java.awt.Color(49, 19, 51));
         rightPanel.setLayout(null);
 
-        welcomeLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        welcomeLabel.setForeground(new java.awt.Color(236, 240, 241));
-        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome");
-        rightPanel.add(welcomeLabel);
-        welcomeLabel.setBounds(450, 50, 176, 20);
+        welcomeText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        welcomeText.setForeground(new java.awt.Color(236, 240, 241));
+        welcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeText.setText("Welcome");
+        rightPanel.add(welcomeText);
+        welcomeText.setBounds(450, 50, 176, 20);
 
         confirmPasswordLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         confirmPasswordLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,6 +134,8 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         universityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         universityName.setText("X - Y - Z University");
 
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -142,17 +145,21 @@ public class StudentPasswordReset extends javax.swing.JFrame {
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(backButton))
                         .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(backButton)
+                .addGap(28, 28, 28)
+                .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addGap(244, 244, 244))
         );
 
@@ -244,6 +251,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backButton;
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel confirmPasswordLabel;
     private javax.swing.JLabel iconUniversity;
@@ -258,7 +266,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
     private javax.swing.JPanel saveButton;
     private javax.swing.JLabel saveLabel;
     private javax.swing.JLabel universityName;
-    private javax.swing.JLabel welcomeLabel;
     private javax.swing.JSeparator welcomeSeparator;
+    private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }

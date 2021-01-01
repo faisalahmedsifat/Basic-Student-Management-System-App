@@ -51,6 +51,7 @@ public class AdminAddStudent extends javax.swing.JFrame {
     private void initComponents() {
 
         leftPanel = new javax.swing.JPanel();
+        backButton = new javax.swing.JLabel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
@@ -90,6 +91,8 @@ public class AdminAddStudent extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(200, 200, 875, 491));
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
 
         iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconUniversity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
@@ -323,7 +326,10 @@ public class AdminAddStudent extends javax.swing.JFrame {
                     .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 18, 18))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -331,7 +337,9 @@ public class AdminAddStudent extends javax.swing.JFrame {
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addContainerGap()
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
@@ -558,6 +566,7 @@ public class AdminAddStudent extends javax.swing.JFrame {
     private javax.swing.JLabel adminLoginText;
     private javax.swing.JLabel adminToStudentText;
     private javax.swing.JSeparator assignStudentSeparator;
+    private javax.swing.JLabel backButton;
     private javax.swing.JSeparator editStudentSeparator;
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JButton jButton1;
