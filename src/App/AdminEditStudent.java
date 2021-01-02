@@ -4,11 +4,8 @@
  * and open the template in the editor.
  */
 package App;
-import java.util.regex.Matcher; 
-import java.util.regex.Pattern; 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import java.sql.*;
+import java.util.*;
+import javax.swing.*;
 
 /**
  *
@@ -19,7 +16,7 @@ public class AdminEditStudent extends javax.swing.JFrame {
     private boolean fetched_atleast_once = false;
     private int current_fetched_id = -1;
     private ArrayList<String> errors = new ArrayList<>();
-    
+    private Student fetchedStudent = new Student();
     /**
      * Creates new form AdminEditStudent
      */
@@ -73,6 +70,12 @@ public class AdminEditStudent extends javax.swing.JFrame {
         assignStudentSeparator = new javax.swing.JSeparator();
         FetchID = new javax.swing.JTextField();
         FetchButton = new javax.swing.JButton();
+        instruction_text0 = new javax.swing.JLabel();
+        instruction_text1 = new javax.swing.JLabel();
+        instruction_text2 = new javax.swing.JLabel();
+        instruction_text3 = new javax.swing.JLabel();
+        instruction_text4 = new javax.swing.JLabel();
+        instruction_text5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 200, 875, 491));
@@ -80,6 +83,11 @@ public class AdminEditStudent extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconUniversity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
@@ -303,6 +311,19 @@ public class AdminEditStudent extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
+        instruction_text0.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        instruction_text0.setText("Instructions:");
+
+        instruction_text1.setText("Phone number needs to be 11 digits.");
+
+        instruction_text2.setText("Email needs to be a valid email.");
+
+        instruction_text3.setText("Gender needs to be either male or female");
+
+        instruction_text4.setText("Date of birth needs to be digits and '-' or '/'");
+
+        instruction_text5.setText("The others fields needs to be non-empty.");
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -319,7 +340,18 @@ public class AdminEditStudent extends javax.swing.JFrame {
                         .addGap(14, 14, 14))
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addComponent(backButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(instruction_text1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(instruction_text2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(instruction_text3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(instruction_text4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(instruction_text5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(leftPanelLayout.createSequentialGroup()
+                                .addComponent(instruction_text0)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
@@ -331,7 +363,19 @@ public class AdminEditStudent extends javax.swing.JFrame {
                 .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(244, 244, 244))
+                .addGap(64, 64, 64)
+                .addComponent(instruction_text0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text5)
+                .addGap(66, 66, 66))
             .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -357,158 +401,119 @@ public class AdminEditStudent extends javax.swing.JFrame {
 
     private void FetchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FetchButtonMouseClicked
         String id_need_to_fetch = FetchID.getText();        
+        int id_in_int = Integer.parseInt(id_need_to_fetch);
+        boolean idExists = true;
         try{
-            conn c1 = new conn();
-            
-            String query = "SELECT * FROM student_profile WHERE id = '" + id_need_to_fetch + "'";
-            ResultSet rs = c1.s.executeQuery(query);
-            
-            if(rs.next()){
-                // Update All Fields with information of id=id_need_to_fetch
-                fetch_all_fields_with_info_of(id_need_to_fetch);
-                fetched_atleast_once = true;
-                current_fetched_id = (int)Integer.parseInt(id_need_to_fetch);
-            }else{
-                JOptionPane.showMessageDialog(null, "No such student found with id=" + id_need_to_fetch + "!");
-            }
-            
-        }catch(Exception ae){
-             ae.printStackTrace();
+            fetchedStudent = new Student(id_in_int); // Set the current instance to the fetched instance
+        }catch (Exception e){
+            idExists = false;
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
+        if(idExists){            
+            // Set the values of the Student instance into the datafields
+            Name.setText(fetchedStudent.getName());
+            FatherName.setText(fetchedStudent.getFathers_name());
+            MothersName.setText(fetchedStudent.getMothers_name());
+            Phone.setText(fetchedStudent.getPhone());
+            Address.setText(fetchedStudent.getAddress());
+            Email.setText(fetchedStudent.getEmail());
+            DOB.setText(fetchedStudent.getDob());
+            Gender.setText(fetchedStudent.getGender());
+            Citizenship.setText(fetchedStudent.getCitizenship());
+            MaritalStatus.setText(fetchedStudent.getMarital_status());
+            
+            // Set the important flags
+            fetched_atleast_once = true;
+            current_fetched_id = id_in_int;
+        }
+       
     }//GEN-LAST:event_FetchButtonMouseClicked
 
     private void SubmitEditStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitEditStudentMouseClicked
         if(fetched_atleast_once && current_fetched_id != -1){
-            if(all_are_valid()){
-                try{
-                conn c1 = new conn();
-                String query = "UPDATE student_profile " + 
-                       "SET `Name`='" +Name.getText()+ "', `Fathers Name`='" +FatherName.getText()+ "', `Mothers Name`='" +MothersName.getText()+ "',"+
-                        " `Phone`='" +Phone.getText()+ "', `Address`='" +Address.getText()+ "', `Email`='" +Email.getText()+ "',"+
-                        " `Date of Birth`='" +DOB.getText()+ "', `Gender`='" +Gender.getText()+ "',"+
-                        " `Citizenship`='" +Citizenship.getText()+ "', `Marital Status`='" +MaritalStatus.getText()+ "'"+
-                        " WHERE `id`="+current_fetched_id+"";
-                //JOptionPane.showMessageDialog(null, query);
-                c1.s.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Successfully edited information of id="+current_fetched_id+"!");
-                
-                // Reset the Whole GUI
-                current_fetched_id = -1;
-                errors.clear();
-                fetched_atleast_once = false;
-                String EmptyStringTemplate = "";
-                FetchID.setText(EmptyStringTemplate);
-                Name.setText(EmptyStringTemplate);
-                FatherName.setText(EmptyStringTemplate);
-                MothersName.setText(EmptyStringTemplate);
-                Phone.setText(EmptyStringTemplate);
-                Address.setText(EmptyStringTemplate);
-                Email.setText(EmptyStringTemplate);
-                DOB.setText(EmptyStringTemplate);
-                Gender.setText(EmptyStringTemplate);
-                Citizenship.setText(EmptyStringTemplate);
-                MaritalStatus.setText(EmptyStringTemplate);
-                
-                
-            }catch(Exception ae){
-                 ae.printStackTrace();
+            // Put everything in a unordered map that we got from the GUI text fields
+            Map<String,String> editedFields = new LinkedHashMap<>();
+            editedFields.put("ID",               String.valueOf(current_fetched_id)); 
+            editedFields.put("Name",             Name.getText()); 
+            editedFields.put("Fathers name",     FatherName.getText());
+            editedFields.put("Mothers name",     MothersName.getText());
+            editedFields.put("Phone",            Phone.getText());
+            editedFields.put("Address",          Address.getText());
+            editedFields.put("Email",            Email.getText());
+            editedFields.put("Date of Birth",    DOB.getText());
+            editedFields.put("Gender",           Gender.getText());
+            editedFields.put("Citizenship",      Citizenship.getText());
+            editedFields.put("Marital Status",   MaritalStatus.getText());
+            
+            // Run validator on the fields
+            boolean hasError = false;
+            try{
+                new Validator(editedFields);
+            }catch (InvalidInput e){
+                // Print in the JOptionPane
+                hasError = true;
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
-            }else{
-                // Throw error
-                String errorMessage = "Error! Correctly fill the following fields: ";
-                for (String s:errors) {
-                    errorMessage = errorMessage + s + ",";
+            
+            if(!hasError){
+                boolean success = true;
+                try{
+                    // Set the map's value into the instance of the Student
+                    fetchedStudent.setName(editedFields.get("Name"));
+                    fetchedStudent.setFathers_name(editedFields.get("Fathers name"));
+                    fetchedStudent.setMothers_name(editedFields.get("Mothers name"));
+                    fetchedStudent.setPhone(editedFields.get("Phone"));
+                    fetchedStudent.setAddress(editedFields.get("Address"));
+                    fetchedStudent.setEmail(editedFields.get("Email"));
+                    fetchedStudent.setDob(editedFields.get("Date of Birth"));
+                    fetchedStudent.setGender(editedFields.get("Gender"));
+                    fetchedStudent.setCitizenship(editedFields.get("Citizenship"));
+                    fetchedStudent.setMarital_status(editedFields.get("Marital Status"));
+                    
+                    // Update the fields of the instance into the database
+                    fetchedStudent.updateToDatabase();
+                }catch(Exception e){
+                    success = false;
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
-                JOptionPane.showMessageDialog(null, errorMessage.substring(0, errorMessage.length() - 1));
+                
+                if(success){
+                    JOptionPane.showMessageDialog(null, "Successfully edited information of id="+current_fetched_id+"!");
+                    
+                    // Reset the Whole GUI
+                    current_fetched_id = -1;
+                    errors.clear();
+                    fetched_atleast_once = false;
+                    String EmptyString = "";
+                    FetchID.setText(EmptyString);
+                    Name.setText(EmptyString);
+                    FatherName.setText(EmptyString);
+                    MothersName.setText(EmptyString);
+                    Phone.setText(EmptyString);
+                    Address.setText(EmptyString);
+                    Email.setText(EmptyString);
+                    DOB.setText(EmptyString);
+                    Gender.setText(EmptyString);
+                    Citizenship.setText(EmptyString);
+                    MaritalStatus.setText(EmptyString);
+                }
+               
             }
         }else{
             JOptionPane.showMessageDialog(null, "You need to fetch a student information using id and fetch button!");
         }
     }//GEN-LAST:event_SubmitEditStudentMouseClicked
 
-    boolean all_are_valid(){
-        String name = Name.getText();
-        String fatherName = FatherName.getText();
-        String mothersName = MothersName.getText();
-        String phoneNo = Phone.getText();
-        String address = Address.getText();
-        String email = Email.getText();
-        String dateOfBirth = DOB.getText();
-        String gender = Gender.getText();
-        String citizenship = Citizenship.getText();
-        String maritalStatus = MaritalStatus.getText();
-        boolean all_valid = true;
-        errors.clear();
-        if(!isValidName(name)){
-            all_valid = false;
-            errors.add("Name");
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            AdminHome adminHomex = new AdminHome(false);
+            adminHomex.setVisible(true);
+            dispose(); 
         }
-        if(!isValidName(fatherName)){
-            all_valid = false;
-            errors.add("Fathers Name");
-        }
-        if(!isValidName(mothersName)){
-            all_valid = false;
-            errors.add("Mothers Name");
-        }
-        if(!isValidPhone(phoneNo)){
-            all_valid = false;
-            errors.add("Phone No");
-        }
-        if(!isValidName(address)){
-            all_valid = false;
-            errors.add("Address");
-        }
-        if(!isValidEmail(email)){
-            all_valid = false;
-            errors.add("Email");
-        }
-        if(!isValidDOB(dateOfBirth)){
-            all_valid = false;
-            errors.add("Date of Birth");
-        }
-        if(!isValidGender(gender)){
-            all_valid = false;
-            errors.add("Gender");
-        }
-        if(!isValidName(citizenship)){
-            all_valid = false;
-            errors.add("Citizenship");
-        }
-        if(!isValidName(maritalStatus)){
-            all_valid = false;
-            errors.add("Marital Status");
-        }
-        return all_valid;
-    }
-    
-    void fetch_all_fields_with_info_of(String idx){
-        int id = Integer.parseInt(idx);
-        try{
-            conn c1 = new conn();
-            
-            String query = "SELECT * FROM student_profile WHERE id = '" + id + "'";
-            ResultSet rs = c1.s.executeQuery(query);
-            rs.next();
-           
-            Name.setText(rs.getString("name"));
-            FatherName.setText(rs.getString("Fathers Name"));
-            MothersName.setText(rs.getString("Mothers Name"));
-            Phone.setText(rs.getString("Phone"));
-            Address.setText(rs.getString("Address"));
-            Email.setText(rs.getString("Email"));
-            DOB.setText(rs.getString("Date of Birth"));
-            Gender.setText(rs.getString("Gender"));
-            Citizenship.setText(rs.getString("Citizenship"));
-            MaritalStatus.setText(rs.getString("Marital Status"));
-            
-            JOptionPane.showMessageDialog(null, "Successfully Fetched!");
-            
-        }catch(Exception ae){
-             ae.printStackTrace();
-        }
-    }
-    
+    }//GEN-LAST:event_backButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -543,33 +548,6 @@ public class AdminEditStudent extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-    public boolean isValidName(String name){
-        return (name.length() > 0);
-    }
-    
-    public boolean isValidPhone(String phone){
-        return (phone.length() == 11);
-    }
-    
-    public boolean isValidEmail(String email){
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
-                            "[a-zA-Z0-9_+&*-]+)*@" + 
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
-                            "A-Z]{2,7}$"; 
-        return ((Pattern.compile(emailRegex).matcher(email).matches()) && (email != null)); 
-    }
-    
-    public boolean isValidDOB(String dob){
-        for (int i = 0; i < dob.length(); i++) {
-            if(!((dob.charAt(i) >= '0' && dob.charAt(i) <= '9') || dob.charAt(i) == '-') ) return false;            
-        }
-        return true;
-    }
-    
-    public boolean isValidGender(String gender){
-        return (gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
@@ -592,6 +570,12 @@ public class AdminEditStudent extends javax.swing.JFrame {
     private javax.swing.JLabel backButton;
     private javax.swing.JSeparator editStudentSeparator;
     private javax.swing.JLabel iconUniversity;
+    private javax.swing.JLabel instruction_text0;
+    private javax.swing.JLabel instruction_text1;
+    private javax.swing.JLabel instruction_text2;
+    private javax.swing.JLabel instruction_text3;
+    private javax.swing.JLabel instruction_text4;
+    private javax.swing.JLabel instruction_text5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

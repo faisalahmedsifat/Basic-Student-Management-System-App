@@ -4,11 +4,8 @@
  * and open the template in the editor.
  */
 package App;
-import java.util.regex.Matcher; 
-import java.util.regex.Pattern; 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import java.sql.*;
+import java.util.*;
+import javax.swing.*;
 /**
  *
  * @author ari13
@@ -25,20 +22,8 @@ public class AdminAddStudent extends javax.swing.JFrame {
         adminToStudentText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Get the latest ID
-        int idx = 0;
-        try{
-            conn c1 = new conn();
-            
-            String query = "SELECT * FROM student_profile";
-            ResultSet rs = c1.s.executeQuery(query);
-            while(rs.next()){
-                idx++;
-            }
-            
-        }catch(Exception ae){
-             ae.printStackTrace();
-        }
-        jLabel20.setText(""+(idx+1));
+        int total_student_now = Student.totalStudents();
+        jLabel20.setText(""+(total_student_now+1));
     }
 
     /**
@@ -85,7 +70,12 @@ public class AdminAddStudent extends javax.swing.JFrame {
         assignStudentSeparator = new javax.swing.JSeparator();
         jLabel21 = new javax.swing.JLabel();
         Password = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        instruction_text0 = new javax.swing.JLabel();
+        instruction_text1 = new javax.swing.JLabel();
+        instruction_text2 = new javax.swing.JLabel();
+        instruction_text3 = new javax.swing.JLabel();
+        instruction_text4 = new javax.swing.JLabel();
+        instruction_text5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 200, 875, 491));
@@ -93,6 +83,11 @@ public class AdminAddStudent extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconUniversity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
@@ -178,13 +173,6 @@ public class AdminAddStudent extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Password");
 
-        jButton1.setText("Back");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
@@ -242,8 +230,6 @@ public class AdminAddStudent extends javax.swing.JFrame {
                                 .addGap(167, 167, 167))
                             .addGroup(rightPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(SubmitAddStudent)))
                         .addGap(38, 38, 38)
                         .addComponent(assignStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,16 +291,27 @@ public class AdminAddStudent extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(MaritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SubmitAddStudent)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SubmitAddStudent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(assignStudentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
+
+        instruction_text0.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        instruction_text0.setText("Instructions:");
+
+        instruction_text1.setText("Phone number needs to be 11 digits.");
+
+        instruction_text2.setText("Email needs to be a valid email.");
+
+        instruction_text3.setText("Gender needs to be either male or female");
+
+        instruction_text4.setText("Date of birth needs to be digits and '-' or '/'");
+
+        instruction_text5.setText("The others fields needs to be non-empty.");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -327,8 +324,15 @@ public class AdminAddStudent extends javax.swing.JFrame {
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
+                    .addComponent(instruction_text1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(instruction_text2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(instruction_text3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(instruction_text4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(instruction_text5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(instruction_text0))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -343,7 +347,19 @@ public class AdminAddStudent extends javax.swing.JFrame {
                 .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(244, 244, 244))
+                .addGap(78, 78, 78)
+                .addComponent(instruction_text0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instruction_text5)
+                .addGap(52, 52, 52))
             .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -368,86 +384,46 @@ public class AdminAddStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_EmailActionPerformed
 
     private void SubmitAddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitAddStudentMouseClicked
-        // TODO add your handling code here:
-        String iddd = jLabel20.getText();
-        String password = Password.getText();
-        String name = Name.getText();
-        String fatherName = FatherName.getText();
-        String mothersName = MothersName.getText();
-        String phoneNo = Phone.getText();
-        String address = Address.getText();
-        String email = Email.getText();
-        String dateOfBirth = DOB.getText();
-        String gender = Gender.getText();
-        String citizenship = Citizenship.getText();
-        String maritalStatus = MaritalStatus.getText();
-        boolean all_valid = true;
-        ArrayList<String> arr = new ArrayList<>();
-        if(!isValidName(password)){
-            all_valid = false;
-            arr.add("Password");
-        }
-        if(!isValidName(name)){
-            all_valid = false;
-            arr.add("Name");
-        }
-        if(!isValidName(fatherName)){
-            all_valid = false;
-            arr.add("Fathers Name");
-        }
-        if(!isValidName(mothersName)){
-            all_valid = false;
-            arr.add("Mothers Name");
-        }
-        if(!isValidPhone(phoneNo)){
-            all_valid = false;
-            arr.add("Phone No");
-        }
-        if(!isValidName(address)){
-            all_valid = false;
-            arr.add("Address");
-        }
-        if(!isValidEmail(email)){
-            all_valid = false;
-            arr.add("Email");
-        }
-        if(!isValidDOB(dateOfBirth)){
-            all_valid = false;
-            arr.add("Date of Birth");
-        }
-        if(!isValidGender(gender)){
-            all_valid = false;
-            arr.add("Gender");
-        }
-        if(!isValidName(citizenship)){
-            all_valid = false;
-            arr.add("Citizenship");
-        }
-        if(!isValidName(maritalStatus)){
-            all_valid = false;
-            arr.add("Marital Status");
+       
+        // Put everything in a unordered map
+        Map<String,String> studentDetails = new LinkedHashMap<>();
+        studentDetails.put("ID",               jLabel20.getText()); // Add +1 to the total students
+        studentDetails.put("password",         Password.getText());
+        studentDetails.put("Name",             Name.getText()); 
+        studentDetails.put("Fathers name",     FatherName.getText());
+        studentDetails.put("Mothers name",     MothersName.getText());
+        studentDetails.put("Phone",            Phone.getText());
+        studentDetails.put("Address",          Address.getText());
+        studentDetails.put("Email",            Email.getText());
+        studentDetails.put("Date of Birth",    DOB.getText());
+        studentDetails.put("Gender",           Gender.getText());
+        studentDetails.put("Citizenship",      Citizenship.getText());
+        studentDetails.put("Marital Status",   MaritalStatus.getText());
+
+        // Validate all the fields
+        boolean hasError = false;
+        try{
+            new Validator(studentDetails);
+        }catch (InvalidInput e){
+            hasError = true;
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         
-        if(all_valid){
-            // Insert 
-            
+        if(!hasError){
+            // Create a Student Instance
+            Student s1 = new Student(studentDetails); // Pass the validated values that came from the GUI
+            boolean hasSQLError = false;
             try{
-                conn c1 = new conn();
-               
-                String sql1 = "INSERT INTO student_login " +
-                   "VALUES (" + iddd + ", '" + password + "')";
+                s1.addToDatabase(); // Add the students detail in the database
+            }catch (Exception e){
+                hasSQLError = true;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+            
+            if(!hasSQLError){
+                JOptionPane.showMessageDialog(null, "Successfully Added New Student!");
                 
-                String sql2 = "INSERT INTO student_profile " +
-                   "VALUES (" + iddd + ", '" + name + "', '" + fatherName + "', '" + mothersName + "', '" + 
-                        phoneNo + "', '" + address + "', '" + email + "', '" + dateOfBirth + "', '" + gender + 
-                        "', '" + citizenship + "', '" + maritalStatus + "')";
-                
-                // Uncomment This for real time application
-                c1.s.executeUpdate(sql1);
-                c1.s.executeUpdate(sql2);
-                JOptionPane.showMessageDialog(null, "Successful!");
-                
-                
+                // Reset all the fields
                 jLabel20.setText(""+ (Integer.parseInt(jLabel20.getText()) + 1)  );
                 Password.setText("");
                 Name.setText("");
@@ -460,95 +436,20 @@ public class AdminAddStudent extends javax.swing.JFrame {
                 Gender.setText("");
                 Citizenship.setText("");
                 MaritalStatus.setText("");
-                
-                //DEBUG ONLY
-//                JOptionPane.showMessageDialog(null, sql1);
-//                JOptionPane.showMessageDialog(null, sql2);
-            }catch(Exception ae){
-                 ae.printStackTrace();
             }
-        }else{
-            // Throw error
-            String errorMessage = "Error! Correctly fill the following fields: ";
-            for (String s:arr) {
-                errorMessage = errorMessage + s + ",";
-            }
-            JOptionPane.showMessageDialog(null, errorMessage.substring(0, errorMessage.length() - 1));
         }
+        
     }//GEN-LAST:event_SubmitAddStudentMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             AdminHome adminHomex = new AdminHome(false);
             adminHomex.setVisible(true);
             dispose(); 
         }
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
+    }//GEN-LAST:event_backButtonMouseClicked
    
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(AdminAddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(AdminAddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(AdminAddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(AdminAddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new AdminAddStudent().setVisible(true);
-//            }
-//        });
-//    }
-    
-    public boolean isValidName(String name){
-        return (name.length() > 0);
-    }
-    
-    public boolean isValidPhone(String phone){
-        return (phone.length() == 11);
-    }
-    
-    public boolean isValidEmail(String email){
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
-                            "[a-zA-Z0-9_+&*-]+)*@" + 
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
-                            "A-Z]{2,7}$"; 
-        return ((Pattern.compile(emailRegex).matcher(email).matches()) && (email != null)); 
-    }
-    
-    public boolean isValidDOB(String dob){
-        for (int i = 0; i < dob.length(); i++) {
-            if(!((dob.charAt(i) >= '0' && dob.charAt(i) <= '9') || dob.charAt(i) == '-') ) return false;            
-        }
-        return true;
-    }
-    
-    public boolean isValidGender(String gender){
-        return (gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
     private javax.swing.JTextField Citizenship;
@@ -569,7 +470,12 @@ public class AdminAddStudent extends javax.swing.JFrame {
     private javax.swing.JLabel backButton;
     private javax.swing.JSeparator editStudentSeparator;
     private javax.swing.JLabel iconUniversity;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel instruction_text0;
+    private javax.swing.JLabel instruction_text1;
+    private javax.swing.JLabel instruction_text2;
+    private javax.swing.JLabel instruction_text3;
+    private javax.swing.JLabel instruction_text4;
+    private javax.swing.JLabel instruction_text5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
