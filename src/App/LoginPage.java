@@ -37,7 +37,6 @@ public class LoginPage extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
-        backButton = new javax.swing.JLabel();
         rightAdminPanel = new javax.swing.JPanel();
         adminLoginText = new javax.swing.JLabel();
         adminUsernameText = new javax.swing.JLabel();
@@ -78,8 +77,6 @@ public class LoginPage extends javax.swing.JFrame {
         universityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         universityName.setText("X - Y - Z University");
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
-
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -92,17 +89,11 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(85, 85, 85)
                 .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(96, 96, 96))
-            .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backButton)
-                .addGap(17, 17, 17)
+                .addGap(58, 58, 58)
                 .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
@@ -458,7 +449,7 @@ public class LoginPage extends javax.swing.JFrame {
             String queryLogin = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
             
             ResultSet loginResults = c2.s.executeQuery(queryLogin);
-            String queryDetails = "SELECT * FROM student_profile WHERE ID = " + id;
+            
             if(loginResults.next()){
                 // Logged in
                 
@@ -529,7 +520,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JTextField adminUserNameTextField;
     private javax.swing.JSeparator adminUsernameSeparator;
     private javax.swing.JLabel adminUsernameText;
-    private javax.swing.JLabel backButton;
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightAdminPanel;

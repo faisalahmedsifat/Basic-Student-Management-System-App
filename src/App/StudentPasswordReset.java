@@ -5,10 +5,19 @@
  */
 package App;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  * @author Sifat
  */
 public class StudentPasswordReset extends javax.swing.JFrame {
+    private int id = CurrentSession.getID();
+    private ArrayList<String> errors = new ArrayList();
 
     /**
      * Creates new form
@@ -105,6 +114,11 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         saveLabel.setForeground(new java.awt.Color(255, 255, 255));
         saveLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saveLabel.setText("Save");
+        saveLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout saveButtonLayout = new javax.swing.GroupLayout(saveButton);
         saveButton.setLayout(saveButtonLayout);
@@ -135,6 +149,11 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         universityName.setText("X - Y - Z University");
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -183,9 +202,86 @@ public class StudentPasswordReset extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveLabelMouseClicked
+        try {
+            // TODO add your handling code here:
+            String oldPassword = String.valueOf(this.passwordField.getPassword());
+            String newPassword = String.valueOf(this.newPasswordField.getPassword());
+            String confirmPassword = String.valueOf(this.confirmPasswordField.getPassword());
+            
+            if(isCorrectCredentials(id,oldPassword)){
+                if(allValid()){
+                    if(newPassword.equals(confirmPassword)){
+                        changePassword(id, newPassword);
+                        String EmptyText = "";
+                        
+                        
+                        this.passwordField.setText(EmptyText);
+                        this.newPasswordField.setText(EmptyText);
+                        this.confirmPasswordField.setText(EmptyText);
+                    }else{
+                        JOptionPane.showMessageDialog(confirmPasswordField, "Your passwords don't match!");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(newPasswordField, "Enter password longer than 6 characters");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Entered Wrong Credentials");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentPasswordReset.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveLabelMouseClicked
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            new StudentHome().setVisible(true);
+            dispose(); 
+        }
+    }//GEN-LAST:event_backButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    
+    private void changePassword(int id, String password) throws SQLException{
+        conn c = new conn();
+        String query = "UPDATE student_login SET password = '"+ password+"' "
+                + "WHERE id = "+id;
+        c.s.executeUpdate(query);
+        JOptionPane.showMessageDialog(confirmPasswordField, "Password changed Successfully!");
+    }
+    
+    private boolean allValid(){
+        String newPassword = String.valueOf(this.newPasswordField.getPassword());
+        
+        boolean allValid  = true;
+        errors.clear();
+        
+        if(!isValidPassword(newPassword)){
+            allValid = false;
+            errors.add("New Password");
+        }
+        return allValid;
+    }
+    
+    private boolean isValidPassword(String password){
+        return (password.length() >= 6);
+    }
+    
+    private boolean isCorrectCredentials(int id,String password) throws SQLException{
+        conn c = new conn();
+        String query = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
+        ResultSet rs = c.s.executeQuery(query);
+        boolean isLoggedIn = false;
+        
+        if(rs.next()){
+            isLoggedIn = true;
+        }
+        return isLoggedIn;
+    }
     
     
     

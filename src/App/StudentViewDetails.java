@@ -322,6 +322,11 @@ public class StudentViewDetails extends javax.swing.JFrame {
         universityName.setText("X - Y - Z University");
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -532,6 +537,15 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private void welcomeTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeTextMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_welcomeTextMouseClicked
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            new StudentHome().setVisible(true);
+            dispose(); 
+        }
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments

@@ -170,6 +170,11 @@ public class StudentHome extends javax.swing.JFrame {
         universityName.setText("X - Y - Z University");
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -223,7 +228,11 @@ public class StudentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_viewDetailsButtonMouseClicked
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
- 
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            new LoginPage().setVisible(true);
+            dispose(); 
+        }
     }//GEN-LAST:event_ExitButtonMouseClicked
 
     private void viewDetailsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsButtonMouseEntered
@@ -262,6 +271,15 @@ public class StudentHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetButtonSeparator.setVisible(false);
     }//GEN-LAST:event_resetButtonMouseExited
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            new LoginPage().setVisible(true);
+            dispose(); 
+        }
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments

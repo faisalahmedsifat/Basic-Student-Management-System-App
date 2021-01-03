@@ -5,13 +5,6 @@
  */
 package App;
 
-import java.awt.HeadlessException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import java.sql.ResultSet;
-
 /**
  *
  * @author Sifat
