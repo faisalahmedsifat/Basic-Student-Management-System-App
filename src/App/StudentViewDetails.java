@@ -5,13 +5,9 @@
  */
 package App;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -21,7 +17,6 @@ import javax.swing.JOptionPane;
 public class StudentViewDetails extends javax.swing.JFrame {
     private int id = CurrentSession.getID();
     private Student curStudent = new Student();
-    private ArrayList<String> errors = new ArrayList();
     /**
      * Creates new form
      */

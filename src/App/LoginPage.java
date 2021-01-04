@@ -5,19 +5,15 @@
  */
 package App;
 
-import java.awt.HeadlessException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import java.sql.ResultSet;
+
 
 /**
  *
  * @author Sifat
  */
 public class LoginPage extends javax.swing.JFrame {
-
     /**
      * Creates new form LoginPage
      */
@@ -406,78 +402,57 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_studentToAdminTextMouseClicked
 
     private void adminLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginButtonActionPerformed
-        // TODO add your handling code here:
-        try{
-            conn c1 = new conn();
-            String username = this.adminUserNameTextField.getText();
-            String password = String.valueOf(this.adminPasswordField.getPassword());
-            
-            String query = "SELECT * FROM admin_login WHERE username = '" + username + "' and password = '" + password + "'";
-            
-            if(c1.s.executeQuery(query).next()){
-                // Logged in
-                
+        Credential credentials = new Credential();
+        String username = this.adminUserNameTextField.getText();
+        String password = String.valueOf(this.adminPasswordField.getPassword());
+        
+        try {
+            if(credentials.isCorrectCredentials(username,password)){
                 // Set The Credentials in the Current Session
                 CurrentSession.setIsLoggedIn(true);
                 CurrentSession.setIsAdmin(true);
                 CurrentSession.setID(0);
                 CurrentSession.setUsername(username);
-               
-                // Open The Admin Panel
+                
                 AdminHome adminHomex = new AdminHome();
                 adminHomex.setVisible(true);
-                dispose(); 
+                dispose();
                 
-            }else{
-                // Invalid Username or Password
-                JOptionPane.showMessageDialog(null, "Invalid Credentials!");
             }
-            
-        }catch(HeadlessException | SQLException ae){
-            ae.printStackTrace();
-        }
+        } catch (InvalidCredentials ex) {
+            JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+        } catch (SQLException ex) {
+            System.out.println("SQL error");
+       
+    }
        
     }//GEN-LAST:event_adminLoginButtonActionPerformed
 
     private void studentLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentLoginButtonMouseClicked
         // TODO add your handling code
+        Credential credentials = new Credential();
         int id = Integer.parseInt(this.studentIdTextField.getText());
         String password = String.valueOf(this.studentPasswordField.getPassword());
         
-        if(checkCredentials(id,password)){
-            CurrentSession.setIsLoggedIn(true);
-            CurrentSession.setID(id);
-            
-            new StudentHome().setVisible(true);
-            dispose();
-            
-            
-            JOptionPane.showMessageDialog(null, "Successfully logged in as student id = "+ CurrentSession.getID());
-        }else{
+        try {
+            if(credentials.isCorrectCredentials(id,password)){
+                CurrentSession.setIsLoggedIn(true);
+                CurrentSession.setID(id);
+                
+                StudentHome studentHomex = new StudentHome();
+                studentHomex.setVisible(true);
+                dispose();
+                
+                
+                JOptionPane.showMessageDialog(null, "Successfully logged in as student id = "+ CurrentSession.getID());
+            }
+        } catch (InvalidCredentials ex) {
             JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+        } catch (SQLException ex) {
+            System.out.println("SQL error");
         }
-       
     }//GEN-LAST:event_studentLoginButtonMouseClicked
 
-    private boolean checkCredentials(int id, String password){
-        boolean isLoggedIn = false;
-        try{
-            conn c2 = new conn();
-            String queryLogin = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
-            ResultSet loginResults = c2.s.executeQuery(queryLogin);
-            
-            if(loginResults.next()){
-                isLoggedIn = true;
-            }
-            
-        }catch(HeadlessException | SQLException ae){
-            ae.printStackTrace();
-        }
-        return isLoggedIn;
-    }
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

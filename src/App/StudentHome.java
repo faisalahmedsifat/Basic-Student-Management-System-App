@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  * @author Sifat
  */
 public class StudentHome extends javax.swing.JFrame {
-
     /**
      * Creates new form
      */
@@ -222,14 +221,16 @@ public class StudentHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsButtonMouseClicked
-        new StudentViewDetails().setVisible(true);
+        StudentViewDetails svd = new StudentViewDetails();
+        svd.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_viewDetailsButtonMouseClicked
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
         int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
-            new LoginPage().setVisible(true);
+            LoginPage loginPagex = new LoginPage();
+            loginPagex.setVisible(true);
             dispose(); 
         }
     }//GEN-LAST:event_ExitButtonMouseClicked
@@ -257,7 +258,8 @@ public class StudentHome extends javax.swing.JFrame {
 
     private void resetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetButtonMouseClicked
         // TODO add your handling code here:
-        new StudentPasswordReset().setVisible(true);
+        StudentPasswordReset spr = new StudentPasswordReset();
+        spr.setVisible(true);
         dispose();
     }//GEN-LAST:event_resetButtonMouseClicked
 
@@ -275,7 +277,8 @@ public class StudentHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
-            new LoginPage().setVisible(true);
+            LoginPage loginPagex = new LoginPage();
+            loginPagex.setVisible(true);
             dispose(); 
         }
     }//GEN-LAST:event_backButtonMouseClicked

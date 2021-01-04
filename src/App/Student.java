@@ -1,5 +1,8 @@
 package App;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Student extends Profile {
     private int ID;
@@ -46,7 +49,7 @@ public class Student extends Profile {
     @Override
     public void addToDatabase() throws Exception{
         try{
-            conn c1 = new conn();
+            //conn c1 = new conn();
 
             String sql1 = "INSERT INTO student_login " +
                     "VALUES (" + getID() + ", '" + getPasswordIsGivenByAdmin() + "')";
@@ -67,7 +70,7 @@ public class Student extends Profile {
     @Override
     public void updateToDatabase() throws Exception{
         try{
-            conn c1 = new conn();
+            //conn c1 = new conn();
 
             String query = "UPDATE student_profile " +
                     "SET `Name`='" +getName()+ "', `Fathers Name`='" +getFathers_name()+ "', `Mothers Name`='" +getMothers_name()+ "',"+
@@ -80,6 +83,16 @@ public class Student extends Profile {
 
         }catch(Exception e){
             throw e;
+        }
+    }
+    
+    public void updatePassToDatabase() throws Exception{
+        try {
+            String query = "UPDATE student_login "+
+                    "SET password = "+getPassword()+" WHERE ID = "+getID()+"";
+            c1.s.executeUpdate(query);
+        } catch (SQLException ex) {
+            throw ex;
         }
     }
 

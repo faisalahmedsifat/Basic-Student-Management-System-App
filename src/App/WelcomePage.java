@@ -222,7 +222,8 @@ public class WelcomePage extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        new LoginPage().setVisible(true);
+        LoginPage loginPagex = new LoginPage();
+        loginPagex.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 

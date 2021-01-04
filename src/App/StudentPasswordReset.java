@@ -6,10 +6,8 @@
 package App;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class StudentPasswordReset extends javax.swing.JFrame {
     private int id = CurrentSession.getID();
-    private ArrayList<String> errors = new ArrayList();
+    private Student curStudent = new Student();
+    private Credential credential = new Credential();
 
     /**
      * Creates new form
@@ -25,7 +24,11 @@ public class StudentPasswordReset extends javax.swing.JFrame {
     public StudentPasswordReset() {
         initComponents();
         welcomeText.setText("Welcome, ID = "+CurrentSession.getID());
-        
+        try {
+            curStudent = new Student(id);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
         // Show the Successful Login Prompt
     }
 
@@ -209,7 +212,7 @@ public class StudentPasswordReset extends javax.swing.JFrame {
             String newPassword = String.valueOf(this.newPasswordField.getPassword());
             String confirmPassword = String.valueOf(this.confirmPasswordField.getPassword());
             
-            if(isCorrectCredentials(id,oldPassword)){
+            if(credential.isCorrectCredentials(id,oldPassword)){
                 if(allValid()){
                     if(newPassword.equals(confirmPassword)){
                         changePassword(id, newPassword);
@@ -222,14 +225,15 @@ public class StudentPasswordReset extends javax.swing.JFrame {
                     }else{
                         JOptionPane.showMessageDialog(confirmPasswordField, "Your passwords don't match!");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(newPasswordField, "Enter password longer than 6 characters");
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "Entered Wrong Credentials");
+//                else{
+//                    JOptionPane.showMessageDialog(newPasswordField, "Enter password longer than 6 characters");
+//                }
             }
+        }  catch (InvalidCredentials ex) {
+            JOptionPane.showMessageDialog(null, "Entered Wrong Credentials");
         } catch (SQLException ex) {
-            Logger.getLogger(StudentPasswordReset.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL error");
         }
     }//GEN-LAST:event_saveLabelMouseClicked
 
@@ -246,42 +250,51 @@ public class StudentPasswordReset extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    private void changePassword(int id, String password) throws SQLException{
-        conn c = new conn();
+    private void changePassword(int id, String password){
+        curStudent.setPassword(String.valueOf(this.newPasswordField.getPassword()));
+ 
+            //Update the instance to the database
+        try{
+            curStudent.updatePassToDatabase();
+            JOptionPane.showMessageDialog(null, "Successfully Updated!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error Occured!");
+        }
+        
+        /*conn c1 = new conn();
         String query = "UPDATE student_login SET password = '"+ password+"' "
                 + "WHERE id = "+id;
-        c.s.executeUpdate(query);
+        c1.s.executeUpdate(query);
         JOptionPane.showMessageDialog(confirmPasswordField, "Password changed Successfully!");
+        */
     }
     
     private boolean allValid(){
-        String newPassword = String.valueOf(this.newPasswordField.getPassword());
+        boolean valid = true;
         
-        boolean allValid  = true;
-        errors.clear();
+        Map<String,String> updatedFields = new LinkedHashMap<>();
+        updatedFields.put("password", String.valueOf(this.newPasswordField.getPassword()));
         
-        if(!isValidPassword(newPassword)){
-            allValid = false;
-            errors.add("New Password");
+        try{
+            new Validator(updatedFields);
+        }catch(InvalidInput e){
+            valid = false;
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        return allValid;
+        return valid;
+//        String newPassword = String.valueOf(this.newPasswordField.getPassword());
+//        
+//        boolean allValid  = true;
+//        errors.clear();
+//        
+//        if(!isValidPassword(newPassword)){
+//            allValid = false;
+//            errors.add("New Password");
+//        }
+//        return allValid;
     }
     
-    private boolean isValidPassword(String password){
-        return (password.length() >= 6);
-    }
     
-    private boolean isCorrectCredentials(int id,String password) throws SQLException{
-        conn c = new conn();
-        String query = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
-        ResultSet rs = c.s.executeQuery(query);
-        boolean isLoggedIn = false;
-        
-        if(rs.next()){
-            isLoggedIn = true;
-        }
-        return isLoggedIn;
-    }
     
     
     

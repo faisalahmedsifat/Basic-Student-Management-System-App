@@ -10,7 +10,7 @@ import javax.swing.*;
  *
  * @author ari13
  */
-public class AdminAddStudent extends javax.swing.JFrame {
+ public class AdminAddStudent extends javax.swing.JFrame {
     
     /**
      * Creates new form AdminAddStudent

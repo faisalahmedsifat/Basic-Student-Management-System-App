@@ -13,6 +13,9 @@ public abstract class Profile {
     private String gender;
     private String citizenship;
     private String marital_status;
+    private String password;
+    
+    public static conn c1 = new conn();
 
     Profile(){
 
@@ -37,7 +40,7 @@ public abstract class Profile {
 
     void ProfileInit(int ID) throws Exception {
         try{
-            conn c1 = new conn();
+            //conn c1 = new conn();
 
             String query = "SELECT * FROM student_profile WHERE id = '" + ID + "'";
             ResultSet rs = c1.s.executeQuery(query);
@@ -69,7 +72,7 @@ public abstract class Profile {
     public static int totalStudents(){
         int total = 0;
         try{
-            conn c1 = new conn();
+            //conn c1 = new conn();
 
             String query = "SELECT * FROM student_profile";
             ResultSet rs = c1.s.executeQuery(query);
@@ -162,4 +165,12 @@ public abstract class Profile {
     public void setMarital_status(String marital_status) {
         this.marital_status = marital_status;
     }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }

@@ -34,6 +34,9 @@ public class Validator {
             if(field_name.equals("Gender")) {
                 runValidatorGender(field_value,field_name);
             }
+            if(field_name.equals("password")){
+                runValidatorPassword(field_value,field_name);
+            }
         }
 
         if(!all_valid_field){
@@ -110,6 +113,13 @@ public class Validator {
 
     void runValidatorGender(String gender, String field_name){
         if(!((gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")))){
+            all_valid_field = false;
+            errors_list.add(field_name);
+        }
+    }
+
+    private void runValidatorPassword(String field_value, String field_name) {
+        if(!(field_value.length() >= 6)){
             all_valid_field = false;
             errors_list.add(field_name);
         }
