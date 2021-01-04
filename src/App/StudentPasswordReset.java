@@ -251,9 +251,9 @@ public class StudentPasswordReset extends javax.swing.JFrame {
      */
     
     private void changePassword(int id, String password){
-        curStudent.setPassword(String.valueOf(this.newPasswordField.getPassword()));
- 
-            //Update the instance to the database
+        curStudent.setPassword(password);
+        
+        //Update the instance to the database
         try{
             curStudent.updatePassToDatabase();
             JOptionPane.showMessageDialog(null, "Successfully Updated!");

@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Student extends Profile {
     private int ID;
@@ -89,7 +90,8 @@ public class Student extends Profile {
     public void updatePassToDatabase() throws Exception{
         try {
             String query = "UPDATE student_login "+
-                    "SET password = "+getPassword()+" WHERE ID = "+getID()+"";
+                    "SET `password`='"+getPassword()+"' WHERE `ID`='"+getID()+"'";
+
             c1.s.executeUpdate(query);
         } catch (SQLException ex) {
             throw ex;
