@@ -85,7 +85,7 @@ public class Student extends Profile {
             throw e;
         }
     }
-    
+    @Override
     public void updatePassToDatabase() throws Exception{
         try {
             String query = "UPDATE student_login "+
