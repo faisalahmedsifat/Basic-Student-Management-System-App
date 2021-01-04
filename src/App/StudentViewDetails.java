@@ -8,6 +8,8 @@ package App;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -18,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class StudentViewDetails extends javax.swing.JFrame {
     private int id = CurrentSession.getID();
+    private Student curStudent = new Student();
     private ArrayList<String> errors = new ArrayList();
     /**
      * Creates new form
@@ -78,6 +81,13 @@ public class StudentViewDetails extends javax.swing.JFrame {
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
         backButton = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 200, 875, 491));
@@ -328,6 +338,27 @@ public class StudentViewDetails extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setText("Instructions:");
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setText("To edit any fields, press on edit button to ");
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel3.setText("the  right of the fields.  ");
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel4.setText("Edit your desired field and press on edit button ");
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel5.setText("again to see the preview. ");
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel6.setText("Then press \"Click here to save changes \" to  ");
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel7.setText("update to database.");
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -336,11 +367,20 @@ public class StudentViewDetails extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(backButton))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                            .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(iconUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(backButton)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
@@ -349,10 +389,24 @@ public class StudentViewDetails extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backButton)
                 .addGap(17, 17, 17)
-                .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(iconUniversity, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(244, 244, 244))
+                .addComponent(universityName, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -362,9 +416,9 @@ public class StudentViewDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, 0)
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,56 +431,27 @@ public class StudentViewDetails extends javax.swing.JFrame {
 
     
     private void scanAllDetails(){
-        try {
-            conn c = new conn();
-            String query = "SELECT * FROM student_profile WHERE id = '" + id + "'";
-            ResultSet rs = c.s.executeQuery(query);
-            
-            rs.next();
-            idLabel.setText(rs.getString(id));
-            fullNameLabel.setText(rs.getString("name"));
-            fatherNameLabel.setText(rs.getString("Fathers Name"));
-            motherNameLabel.setText(rs.getString("Mothers Name"));
-            cellPhoneLabel.setText(rs.getString("Phone"));
-            addressLabel.setText(rs.getString("Address"));
-            emailLabel.setText(rs.getString("Email"));
-            dateOfBirthLabel.setText(rs.getString("Date of Birth"));
-            genderLabel.setText(rs.getString("Gender"));
-            citizenshipLabel.setText(rs.getString("Citizenship"));
-            maritalStatusLabel.setText(rs.getString("Marital Status"));
-            // Show the Successful Login Prompt
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        boolean hasError = false;
+        try{
+            curStudent = new Student(id);
+        }catch(Exception e){
+            hasError = true;
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }
-    
-    boolean allValid(){
-        
-        String phoneNo = cellPhoneLabel.getText();
-        String address = addressLabel.getText();
-        String email = emailLabel.getText();
-        String maritalStatus = maritalStatusLabel.getText();
-        
-        boolean all_valid = true;
-        errors.clear();
-        
-        if(!isValidPhone(phoneNo)){
-            all_valid = false;
-            errors.add("Phone No");
+ 
+        if(!hasError){
+            idLabel.setText(String.valueOf(id));
+            fullNameLabel.setText(curStudent.getName());
+            fatherNameLabel.setText(curStudent.getFathers_name());
+            motherNameLabel.setText(curStudent.getMothers_name());
+            cellPhoneLabel.setText(curStudent.getPhone());
+            addressLabel.setText(curStudent.getAddress());
+            emailLabel.setText(curStudent.getEmail());
+            dateOfBirthLabel.setText(curStudent.getDob());
+            genderLabel.setText(curStudent.getGender());
+            citizenshipLabel.setText(curStudent.getCitizenship());
+            maritalStatusLabel.setText(curStudent.getMarital_status());
         }
-        if(!isValidName(address)){
-            all_valid = false;
-            errors.add("Address");
-        }
-        if(!isValidEmail(email)){
-            all_valid = false;
-            errors.add("Email");
-        }
-        if(!isValidName(maritalStatus)){
-            all_valid = false;
-            errors.add("Marital Status");
-        }
-        return all_valid;
     }
     
     public boolean isValidName(String name){
@@ -510,28 +535,36 @@ public class StudentViewDetails extends javax.swing.JFrame {
 
     private void saveChangesLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveChangesLabelMouseClicked
         // TODO add your handling code here:
-        if(allValid()){
-                try{
-                conn c1 = new conn();
-                String query = "UPDATE student_profile " + 
-                       "SET `Phone`='" +cellPhoneLabel.getText()+ "', `Address`='" +addressLabel.getText()+ "', `Email`='" +emailLabel.getText()+ "',"+"`Marital Status`='" +maritalStatusLabel.getText()+ "'"+
-                        " WHERE `ID`="+id+"";
-                //JOptionPane.showMessageDialog(null, query);
-                c1.s.executeUpdate(query);
-                JOptionPane.showMessageDialog(welcomeText, "Saved Successfully");
-                
-                
-            }catch(Exception ae){
-                 ae.printStackTrace();
+        Map<String,String> updatedFields = new LinkedHashMap<>();
+        updatedFields.put("Phone",            cellPhoneLabel.getText()); 
+        updatedFields.put("Address",          addressLabel.getText());
+        updatedFields.put("Email",            emailLabel.getText());
+        updatedFields.put("Marital Status",   maritalStatusLabel.getText()); 
+ 
+        boolean hasError = false;
+ 
+        try{
+            new Validator(updatedFields);
+        }catch(InvalidInput e){
+            hasError = true;
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+ 
+        if(!hasError){
+            // Update in the instance of the Student
+            curStudent.setPhone(cellPhoneLabel.getText());
+            curStudent.setAddress(addressLabel.getText());
+            curStudent.setEmail(emailLabel.getText());
+            curStudent.setMarital_status(maritalStatusLabel.getText());
+ 
+            //Update the instance to the database
+            try{
+                curStudent.updateToDatabase();
+                JOptionPane.showMessageDialog(null, "Successfully Updated!");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error Occured!");
             }
-            }else{
-                // Throw error
-                String errorMessage = "Error! Correctly fill the following fields: ";
-                for (String s:errors) {
-                    errorMessage = errorMessage + s + ",";
-                }
-                JOptionPane.showMessageDialog(null, errorMessage.substring(0, errorMessage.length() - 1));
-            }
+        }
     }//GEN-LAST:event_saveChangesLabelMouseClicked
 
     private void welcomeTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeTextMouseClicked
@@ -627,6 +660,13 @@ public class StudentViewDetails extends javax.swing.JFrame {
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JLabel idConst;
     private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel maritalStatusConst;

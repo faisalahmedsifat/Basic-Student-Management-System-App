@@ -22,7 +22,6 @@ public class StudentHome extends javax.swing.JFrame {
 //        welcomeText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Show the Successful Login Prompt
-        JOptionPane.showMessageDialog(null, "Successfully logged in as student id = "+ CurrentSession.getID());
         welcomeText.setText("Welcome, ID = "+CurrentSession.getID());
     }
 

@@ -441,38 +441,40 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void studentLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentLoginButtonMouseClicked
         // TODO add your handling code
+        int id = Integer.parseInt(this.studentIdTextField.getText());
+        String password = String.valueOf(this.studentPasswordField.getPassword());
+        
+        if(checkCredentials(id,password)){
+            CurrentSession.setIsLoggedIn(true);
+            CurrentSession.setID(id);
+            
+            new StudentHome().setVisible(true);
+            dispose();
+            
+            
+            JOptionPane.showMessageDialog(null, "Successfully logged in as student id = "+ CurrentSession.getID());
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+        }
+       
+    }//GEN-LAST:event_studentLoginButtonMouseClicked
+
+    private boolean checkCredentials(int id, String password){
+        boolean isLoggedIn = false;
         try{
             conn c2 = new conn();
-            int id = Integer.parseInt(this.studentIdTextField.getText());
-            String password = String.valueOf(this.studentPasswordField.getPassword());
-            
             String queryLogin = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";
-            
             ResultSet loginResults = c2.s.executeQuery(queryLogin);
             
             if(loginResults.next()){
-                // Logged in
-                
-                // Set The Credentials in the Current Session
-                CurrentSession.setIsLoggedIn(true);
-                CurrentSession.setID(id);
-               
-                // Open The Admin Panel
-                 
-                new StudentHome().setVisible(true);
-                dispose();
-                
-            }else{
-                // Invalid Username or Password
-                JOptionPane.showMessageDialog(null, "Invalid Credentials!");
+                isLoggedIn = true;
             }
             
         }catch(HeadlessException | SQLException ae){
             ae.printStackTrace();
         }
-       
-    }//GEN-LAST:event_studentLoginButtonMouseClicked
-
+        return isLoggedIn;
+    }
     /**
      * @param args the command line arguments
      */
