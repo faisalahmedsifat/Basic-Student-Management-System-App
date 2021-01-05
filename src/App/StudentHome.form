@@ -49,7 +49,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="viewDetailsSeparator.setVisible(false);&#xa;ExitButtonSeparator.setVisible(false);&#xa;resetButtonSeparator.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="viewDetailsSeparator.setVisible(false);&#xa;ExitButtonSeparator.setVisible(false);&#xa;resetButtonSeparator.setVisible(false);&#xa;assignedButtonSeparator.setVisible(false);"/>
       </AuxValues>
 
       <Layout>
@@ -71,6 +71,8 @@
                               <Component id="ExitButtonSeparator" alignment="0" max="32767" attributes="0"/>
                               <Component id="resetButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="resetButtonSeparator" alignment="1" max="32767" attributes="0"/>
+                              <Component id="assignedCoursesButton" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="assignedButtonSeparator" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -86,17 +88,21 @@
                   <Component id="welcomeText" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="studentLoginText" pref="71" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="viewDetailsButton" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="viewDetailsSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="assignedCoursesButton" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="assignedButtonSeparator" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="resetButton" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="resetButtonSeparator" min="-2" pref="14" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="ExitButton" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="ExitButton" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ExitButtonSeparator" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
@@ -191,6 +197,27 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="resetButtonSeparator">
+        </Component>
+        <Component class="javax.swing.JLabel" name="assignedCoursesButton">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f1" green="f0" red="ec" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/App/icons/icons8_more_details_25px_2.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Assigned Courses"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="assignedCoursesButtonMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="assignedCoursesButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="assignedCoursesButtonMouseExited"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="assignedButtonSeparator">
         </Component>
       </SubComponents>
     </Container>

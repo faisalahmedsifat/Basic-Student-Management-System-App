@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-
 public class StudentPasswordReset extends javax.swing.JFrame {
     private int id = CurrentSession.getID();
     private Student curStudent = new Student();
@@ -14,7 +13,8 @@ public class StudentPasswordReset extends javax.swing.JFrame {
 
     public StudentPasswordReset() {
         initComponents();
-        welcomeText.setText("Welcome, ID = "+CurrentSession.getID());
+        welcomeText.setText("Welcome, ID = "+id);
+        idLabel.setText(""+id);
         try {
             curStudent = new Student(id);
         } catch (Exception ex) {
@@ -66,9 +66,8 @@ public class StudentPasswordReset extends javax.swing.JFrame {
 
         idLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         idLabel.setForeground(new java.awt.Color(255, 255, 255));
-        idLabel.setText("Hello");
         rightPanel.add(idLabel);
-        idLabel.setBounds(231, 93, 370, 16);
+        idLabel.setBounds(230, 90, 370, 20);
         rightPanel.add(welcomeSeparator);
         welcomeSeparator.setBounds(460, 70, 170, 10);
 

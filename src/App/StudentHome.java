@@ -24,6 +24,8 @@ public class StudentHome extends javax.swing.JFrame {
         ExitButtonSeparator = new javax.swing.JSeparator();
         resetButton = new javax.swing.JLabel();
         resetButtonSeparator = new javax.swing.JSeparator();
+        assignedCoursesButton = new javax.swing.JLabel();
+        assignedButtonSeparator = new javax.swing.JSeparator();
         leftPanel = new javax.swing.JPanel();
         iconUniversity = new javax.swing.JLabel();
         universityName = new javax.swing.JLabel();
@@ -36,6 +38,7 @@ public class StudentHome extends javax.swing.JFrame {
         viewDetailsSeparator.setVisible(false);
         ExitButtonSeparator.setVisible(false);
         resetButtonSeparator.setVisible(false);
+        assignedButtonSeparator.setVisible(false);
 
         welcomeText.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         welcomeText.setForeground(new java.awt.Color(236, 240, 241));
@@ -94,6 +97,22 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
+        assignedCoursesButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        assignedCoursesButton.setForeground(new java.awt.Color(236, 240, 241));
+        assignedCoursesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_more_details_25px_2.png"))); // NOI18N
+        assignedCoursesButton.setText("Assigned Courses");
+        assignedCoursesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                assignedCoursesButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                assignedCoursesButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                assignedCoursesButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
@@ -112,7 +131,9 @@ public class StudentHome extends javax.swing.JFrame {
                             .addComponent(ExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ExitButtonSeparator)
                             .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resetButtonSeparator, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(resetButtonSeparator, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(assignedCoursesButton, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(assignedButtonSeparator))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -123,17 +144,21 @@ public class StudentHome extends javax.swing.JFrame {
                 .addComponent(welcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(studentLoginText, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(52, 52, 52)
+                .addGap(28, 28, 28)
                 .addComponent(viewDetailsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewDetailsSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
+                .addComponent(assignedCoursesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(assignedButtonSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resetButtonSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ExitButtonSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
@@ -256,10 +281,24 @@ public class StudentHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_backButtonMouseClicked
 
+    private void assignedCoursesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignedCoursesButtonMouseClicked
+
+    }//GEN-LAST:event_assignedCoursesButtonMouseClicked
+
+    private void assignedCoursesButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignedCoursesButtonMouseEntered
+        assignedButtonSeparator.setVisible(true);
+    }//GEN-LAST:event_assignedCoursesButtonMouseEntered
+
+    private void assignedCoursesButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignedCoursesButtonMouseExited
+        assignedButtonSeparator.setVisible(false);
+    }//GEN-LAST:event_assignedCoursesButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ExitButton;
     private javax.swing.JSeparator ExitButtonSeparator;
+    private javax.swing.JSeparator assignedButtonSeparator;
+    private javax.swing.JLabel assignedCoursesButton;
     private javax.swing.JLabel backButton;
     private javax.swing.JLabel iconUniversity;
     private javax.swing.JPanel leftPanel;
