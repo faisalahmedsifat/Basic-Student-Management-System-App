@@ -1,9 +1,7 @@
 package App;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 public class Student extends Profile {
     private int ID;
@@ -17,7 +15,6 @@ public class Student extends Profile {
 
     Student(Map<String,String> fields){
         super();
-        boolean hasError = false;
         try{
             super.ProfileInit(fields); // Pass the fields to the superclass to store them in the object
         }catch (Exception e){
@@ -50,8 +47,6 @@ public class Student extends Profile {
     @Override
     public void addToDatabase() throws Exception{
         try{
-            //conn c1 = new conn();
-
             String sql1 = "INSERT INTO student_login " +
                     "VALUES (" + getID() + ", '" + getPasswordIsGivenByAdmin() + "')";
 
@@ -71,7 +66,6 @@ public class Student extends Profile {
     @Override
     public void updateToDatabase() throws Exception{
         try{
-            //conn c1 = new conn();
 
             String query = "UPDATE student_profile " +
                     "SET `Name`='" +getName()+ "', `Fathers Name`='" +getFathers_name()+ "', `Mothers Name`='" +getMothers_name()+ "',"+

@@ -1,4 +1,5 @@
 package App;
+
 public class InvalidInput extends Exception{
     InvalidInput(){
         super();

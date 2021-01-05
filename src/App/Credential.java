@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package App;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author faisa
- */
+
 public class Credential {
+    //Creates new connection
     private conn c1 = new conn();
     boolean isCorrectCredentials(int id,String password) throws InvalidCredentials, SQLException{
         
@@ -28,6 +22,7 @@ public class Credential {
         return isLoggedIn;
     }
     
+    //Overloaded method
     boolean isCorrectCredentials(String username,String password) throws InvalidCredentials, SQLException{
         
         String query = "SELECT * FROM admin_login WHERE username = '" + username + "' and password = '" + password + "'";
