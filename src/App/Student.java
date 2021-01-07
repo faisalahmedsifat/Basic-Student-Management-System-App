@@ -54,10 +54,15 @@ public class Student extends Profile {
                     "VALUES (" + getID() + ", '" + getName() + "', '" + getFathers_name() + "', '" + getMothers_name() + "', '" +
                     getPhone() + "', '" + getAddress() + "', '" + getEmail() + "', '" + getDob() + "', '" + getGender() +
                     "', '" + getCitizenship() + "', '" + getMarital_status() + "')";
+            
+            String sql3 = "INSERT INTO student_courses " +
+                    "VALUES (" + getID() + ",false,false,false,false,false,false,false,false,false,false)";
 
             c1.s.executeUpdate(sql1);
             c1.s.executeUpdate(sql2);
+            c1.s.executeUpdate(sql3);
 
+            
         }catch(Exception e){
             throw e;
         }
