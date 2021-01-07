@@ -231,7 +231,9 @@ public class AdminHome extends javax.swing.JFrame {
 
     private void AssignStudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignStudentButtonMouseClicked
         
-        JOptionPane.showMessageDialog(null, "Clicked The Assign Course Button");
+        AdminAssignCourse adminassigncourse = new AdminAssignCourse();
+        adminassigncourse.setVisible(true);
+        dispose();
     }//GEN-LAST:event_AssignStudentButtonMouseClicked
 
     private void AddStudentButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentButtonMouseEntered
