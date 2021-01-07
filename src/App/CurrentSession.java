@@ -1,6 +1,8 @@
 
 package App;
 
+import javax.swing.JOptionPane;
+
 public class CurrentSession {
 
     private static boolean isLoggedIn = false;
@@ -11,7 +13,7 @@ public class CurrentSession {
     public static boolean isIsLoggedIn() {
         return isLoggedIn;
     }
-
+    
     public static void setIsLoggedIn(boolean isLoggedIn) {
         CurrentSession.isLoggedIn = isLoggedIn;
     }
