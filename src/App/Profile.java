@@ -65,13 +65,13 @@ public abstract class Profile {
         }
     }
 
-    // Two abstract methods that will be implemented in the classes that will inherit this super class
+    // Three abstract methods that will be implemented in the classes that will inherit this super class
     public abstract void addToDatabase() throws Exception;
     public abstract void updateToDatabase() throws Exception;
     public abstract void updatePassToDatabase() throws Exception;
 
 
-    public static int totalStudents(){
+    public int totalStudents(){
         int total = 0;
         try{
             //conn c1 = new conn();

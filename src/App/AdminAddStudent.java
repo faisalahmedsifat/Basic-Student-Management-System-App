@@ -5,7 +5,7 @@ import javax.swing.*;
 
 
  public class AdminAddStudent extends javax.swing.JFrame {
-
+     Student students = new Student();
      /**
      * Creates new form AdminAddStudent
      */
@@ -16,7 +16,7 @@ import javax.swing.*;
         adminToStudentText.setText("Hello," + CurrentSession.getUsername() + "");
         
         // Get the latest ID
-        int total_student_now = Student.totalStudents();
+        int total_student_now = students.totalStudents();
         jLabel20.setText(""+(total_student_now+1));
     }
     

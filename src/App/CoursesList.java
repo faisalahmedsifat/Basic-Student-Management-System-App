@@ -169,6 +169,18 @@ public class CoursesList {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+    
+    public void closeConnection(){
+        try {
+            conn c1 = new conn();
+            c1.s.close();
+            c1.c.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    
 
     public int getID() {
         return ID;

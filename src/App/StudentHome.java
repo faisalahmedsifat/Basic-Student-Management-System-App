@@ -282,7 +282,9 @@ public class StudentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void assignedCoursesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignedCoursesButtonMouseClicked
-
+        StudentAssignedCourse sac = new StudentAssignedCourse();
+        sac.setVisible(true);
+        dispose();
     }//GEN-LAST:event_assignedCoursesButtonMouseClicked
 
     private void assignedCoursesButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignedCoursesButtonMouseEntered
