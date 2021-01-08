@@ -517,11 +517,14 @@ public class StudentAssignedCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void dropCourseFromList(int i){
-       String current_dropping_course_identifier = courseListCur.listOfCourse.get(i).getIdentifier();
-       courseListCur.dropCourseOfStudent(current_dropping_course_identifier);
-       courseListCur.updateToDataBase();
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to drop this course?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            String current_dropping_course_identifier = courseListCur.listOfCourse.get(i).getIdentifier();
+            courseListCur.dropCourseOfStudent(current_dropping_course_identifier);
+            courseListCur.updateToDataBase();
         
-       scanAllDetails();
+            scanAllDetails();
+        }
     }
     
     /**

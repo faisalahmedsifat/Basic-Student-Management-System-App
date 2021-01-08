@@ -158,6 +158,11 @@ public class AdminHome extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_back_to_30px.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
 
         iconUniversity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconUniversity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/App/icons/icons8_university_campus_100px_1.png"))); // NOI18N
@@ -266,6 +271,16 @@ public class AdminHome extends javax.swing.JFrame {
         assignStudentSeparator.setVisible(false);
         
     }//GEN-LAST:event_AssignStudentButtonMouseExited
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to go back?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            LoginPage loginPagex = new LoginPage();
+            loginPagex.setVisible(true);
+            dispose(); 
+        }
+    }//GEN-LAST:event_backButtonMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,7 +18,7 @@ public class CoursesList {
     public CoursesList(int ID) throws Exception{
         // Fetch the Courses list from the db to the arraylist
         try{
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             setID(ID);
             String query = "SELECT * FROM student_courses WHERE `ID`='"+ID+"'";
             ResultSet r1 = c1.s.executeQuery(query);
@@ -125,7 +125,7 @@ public class CoursesList {
 
     public void updateToDataBase(){
         try{
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             String query = "";
             
             // Run 2 SQL
@@ -172,7 +172,7 @@ public class CoursesList {
     
     public void closeConnection(){
         try {
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             c1.s.close();
             c1.c.close();
         } catch (Exception e) {

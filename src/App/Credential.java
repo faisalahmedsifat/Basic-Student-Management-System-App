@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Credential {
     //Creates new connection
-    private conn c1 = new conn();
+    private Conn c1 = new Conn();
     boolean isCorrectCredentials(int id,String password) throws InvalidCredentials, SQLException{
         
         String query = "SELECT * FROM student_login WHERE ID = " + id + " and password = '" + password + "'";

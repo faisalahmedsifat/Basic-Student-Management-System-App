@@ -232,6 +232,9 @@
               <Image iconType="3" name="/App/icons/icons8_back_to_30px.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backButtonMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="iconUniversity">
           <Properties>

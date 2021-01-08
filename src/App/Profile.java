@@ -15,7 +15,7 @@ public abstract class Profile {
     private String marital_status;
     private String password;
     
-    public static conn c1 = new conn();
+    public static Conn c1 = new Conn();
 
     Profile(){
 
@@ -40,7 +40,7 @@ public abstract class Profile {
 
     void ProfileInit(int ID) throws Exception {
         try{
-            //conn c1 = new conn();
+            //conn c1 = new Conn();
 
             String query = "SELECT * FROM student_profile WHERE id = '" + ID + "'";
             ResultSet rs = c1.s.executeQuery(query);
@@ -71,10 +71,10 @@ public abstract class Profile {
     public abstract void updatePassToDatabase() throws Exception;
 
 
-    public int totalStudents(){
+    public static int totalStudents(){
         int total = 0;
         try{
-            //conn c1 = new conn();
+            //conn c1 = new Conn();
 
             String query = "SELECT * FROM student_profile";
             ResultSet rs = c1.s.executeQuery(query);

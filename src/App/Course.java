@@ -16,7 +16,7 @@ public class Course {
     // For constructing using database and a identifier
     public Course(String identifier){
         try{
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             String query = "SELECT * FROM course_details WHERE `Identifier`='"+identifier+"'";
             ResultSet r1 = c1.s.executeQuery(query);
             if(r1.next()){
@@ -35,7 +35,7 @@ public class Course {
     public static ArrayList<String> getAllValidCourseList(){
         ArrayList<String> lists = new ArrayList<String>();
         try{
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             String query = "SELECT * FROM course_details";
             ResultSet r1 = c1.s.executeQuery(query);
             
@@ -70,7 +70,7 @@ public class Course {
 
     public static boolean isValidCourse(String identifier){
         try{
-            conn c1 = new conn();
+            Conn c1 = new Conn();
             String query = "SELECT * FROM course_details WHERE `Identifier`='"+identifier+"'";
             ResultSet r1 = c1.s.executeQuery(query);
             return r1.next(); // return a true if course exists or false
