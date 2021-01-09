@@ -4,7 +4,6 @@ package App;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class StudentViewDetails extends javax.swing.JFrame {
@@ -281,11 +280,6 @@ public class StudentViewDetails extends javax.swing.JFrame {
         welcomeText.setForeground(new java.awt.Color(236, 240, 241));
         welcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeText.setText("Welcome, ");
-        welcomeText.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                welcomeTextMouseClicked(evt);
-            }
-        });
         rightPanel.add(welcomeText);
         welcomeText.setBounds(450, 10, 176, 31);
 
@@ -433,22 +427,7 @@ public class StudentViewDetails extends javax.swing.JFrame {
             maritalStatusLabel.setText(curStudent.getMarital_status());
         }
     }
-    
-    public boolean isValidName(String name){
-        return (name.length() > 0);
-    }
-    
-    public boolean isValidPhone(String phone){
-        return (phone.length() >= 10);
-    }
-    
-    public boolean isValidEmail(String email){
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
-                            "[a-zA-Z0-9_+&*-]+)*@" + 
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
-                            "A-Z]{2,7}$"; 
-        return ((Pattern.compile(emailRegex).matcher(email).matches()) && (email != null)); 
-    }
+
     
     private void editCellLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCellLabelMouseClicked
         // TODO add your handling code here:
@@ -544,10 +523,6 @@ public class StudentViewDetails extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_saveChangesLabelMouseClicked
-
-    private void welcomeTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeTextMouseClicked
-
-    }//GEN-LAST:event_welcomeTextMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
 

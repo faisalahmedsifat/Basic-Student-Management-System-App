@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/AdminAddStudent.java</file>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/Course.java</file>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/conn.java</file>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/StudentAssignedCourse.java</file>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/AdminAssignCourse.java</file>
+            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/WelcomePage.java</file>
+            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/AdminHome.java</file>
+            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/Conn.java</file>
             <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/StudentHome.java</file>
-            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/CoursesList.java</file>
+            <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/Student.java</file>
             <file>file:/E:/Programming/JAVA/Projects/Basic%20Student%20Management%20System%20App/src/App/Profile.java</file>
         </group>
     </open-files>

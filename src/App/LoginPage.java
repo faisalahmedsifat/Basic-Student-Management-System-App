@@ -95,11 +95,7 @@ public class LoginPage extends javax.swing.JFrame {
         adminUserNameTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         adminUserNameTextField.setForeground(new java.awt.Color(255, 255, 255));
         adminUserNameTextField.setBorder(null);
-        adminUserNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminUserNameTextFieldActionPerformed(evt);
-            }
-        });
+
 
         adminUsernameSeparator.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -199,11 +195,7 @@ public class LoginPage extends javax.swing.JFrame {
         rightAdminPanel.setVisible(false);
 
         rightStudentPanel.setBackground(new java.awt.Color(49, 19, 51));
-        rightStudentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rightStudentPanelMouseClicked(evt);
-            }
-        });
+
 
         studentLoginText.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         studentLoginText.setForeground(new java.awt.Color(204, 204, 204));
@@ -218,11 +210,7 @@ public class LoginPage extends javax.swing.JFrame {
         studentIdTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         studentIdTextField.setForeground(new java.awt.Color(255, 255, 255));
         studentIdTextField.setBorder(null);
-        studentIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentIdTextFieldActionPerformed(evt);
-            }
-        });
+
 
         studentUsernameSeparator.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -255,9 +243,7 @@ public class LoginPage extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 studentToAdminTextMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                studentToAdminTextMouseEntered(evt);
-            }
+
         });
 
         studentToAdminSeparator.setBackground(new java.awt.Color(204, 204, 204));
@@ -349,14 +335,6 @@ public class LoginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adminUserNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUserNameTextFieldActionPerformed
-
-    }//GEN-LAST:event_adminUserNameTextFieldActionPerformed
-
-    private void studentIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdTextFieldActionPerformed
-
-    }//GEN-LAST:event_studentIdTextFieldActionPerformed
-
     private void adminToStudentTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminToStudentTextMouseClicked
 
         int option = JOptionPane.showConfirmDialog(this, "Do you want to login in as student?", "Are you sure?", JOptionPane.YES_NO_OPTION);
@@ -366,15 +344,7 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_adminToStudentTextMouseClicked
 
-    private void studentToAdminTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentToAdminTextMouseEntered
 
-        
-    }//GEN-LAST:event_studentToAdminTextMouseEntered
-
-    private void rightStudentPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightStudentPanelMouseClicked
-
-        
-    }//GEN-LAST:event_rightStudentPanelMouseClicked
 
     private void studentToAdminTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentToAdminTextMouseClicked
 
@@ -438,38 +408,6 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_studentLoginButtonMouseClicked
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginPage().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminLoginButton;

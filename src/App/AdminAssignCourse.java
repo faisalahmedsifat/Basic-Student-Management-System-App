@@ -8,14 +8,10 @@ package App;
 import java.util.*;
 import javax.swing.*;
 
-/**
- *
- * @author ari13
- */
 public class AdminAssignCourse extends javax.swing.JFrame {
 
     private CoursesList courseListCur = new CoursesList();
-    int IDCurrent = -1;
+    private int IDCurrent = -1;
     /**
      * Creates new form AdminAssignCourse
      */
@@ -296,11 +292,6 @@ public class AdminAssignCourse extends javax.swing.JFrame {
         sixthCourseNameLabel.setText("Sample Name");
 
         listOfCoursesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
-        listOfCoursesComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listOfCoursesComboBoxActionPerformed(evt);
-            }
-        });
 
         addCourseButton.setText("Add");
         addCourseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -430,11 +421,6 @@ public class AdminAssignCourse extends javax.swing.JFrame {
         instructionalLabelID.setForeground(new java.awt.Color(255, 255, 255));
         instructionalLabelID.setText("Assign Courses to ID:");
 
-        givenID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                givenIDActionPerformed(evt);
-            }
-        });
 
         fetchButton.setText("Fetch");
         fetchButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -508,11 +494,6 @@ public class AdminAssignCourse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void givenIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_givenIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_givenIDActionPerformed
-
     private void firstCourseDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstCourseDeleteButtonActionPerformed
         dropCourseFromList(0);
     }//GEN-LAST:event_firstCourseDeleteButtonActionPerformed
@@ -528,11 +509,6 @@ public class AdminAssignCourse extends javax.swing.JFrame {
     private void sixthCourseDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixthCourseDeleteButtonActionPerformed
         dropCourseFromList(5);
     }//GEN-LAST:event_sixthCourseDeleteButtonActionPerformed
-
-    private void listOfCoursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listOfCoursesComboBoxActionPerformed
-        
-    }//GEN-LAST:event_listOfCoursesComboBoxActionPerformed
-
     public void dismissRow(int i){
         if(i == 0){
             firstCourseCodeName.setVisible(false);
@@ -680,51 +656,13 @@ public class AdminAssignCourse extends javax.swing.JFrame {
         dispose();
     }
     
-    private void addCourseToList(String identifier){
+    private void addCourseToList(String identifier) {
         courseListCur.assignCourseToStudent(identifier);
         courseListCur.updateToDataBase();
-        
+
         AdminAssignCourse adminassigncourse = new AdminAssignCourse(this.IDCurrent);
         adminassigncourse.setVisible(true);
         dispose();
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminAssignCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminAssignCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminAssignCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminAssignCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CurrentSession.setIsAdmin(true);
-                CurrentSession.setIsLoggedIn(true);
-                CurrentSession.setUsername("admin");
-                new AdminAssignCourse().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -119,11 +119,6 @@ public class AdminEditStudent extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Address");
 
-        Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailActionPerformed(evt);
-            }
-        });
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Email");
@@ -382,10 +377,6 @@ public class AdminEditStudent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
-        
-    }//GEN-LAST:event_EmailActionPerformed
 
     private void FetchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FetchButtonMouseClicked
         String id_need_to_fetch = FetchID.getText();        
