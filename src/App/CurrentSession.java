@@ -1,7 +1,6 @@
 
 package App;
 
-import javax.swing.JOptionPane;
 
 public class CurrentSession {
 
@@ -10,16 +9,9 @@ public class CurrentSession {
     private static int ID = -1;
     private static String username = "";
 
-    public static boolean isIsLoggedIn() {
-        return isLoggedIn;
-    }
     
     public static void setIsLoggedIn(boolean isLoggedIn) {
         CurrentSession.isLoggedIn = isLoggedIn;
-    }
-
-    public static boolean isIsAdmin() {
-        return isAdmin;
     }
 
     public static void setIsAdmin(boolean isAdmin) {
@@ -42,9 +34,6 @@ public class CurrentSession {
         CurrentSession.username = username;
     }
 
-    static boolean setIsLoggedIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 
 }

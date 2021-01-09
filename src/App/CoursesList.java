@@ -169,16 +169,7 @@ public class CoursesList {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
-    public void closeConnection(){
-        try {
-            Conn c1 = new Conn();
-            c1.s.close();
-            c1.c.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
+
     
     
 

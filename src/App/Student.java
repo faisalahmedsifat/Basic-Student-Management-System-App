@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Student extends Profile {
     private int ID;
-    public boolean all_fields_fetched_or_entered = true; // Check if all fields are either fetched or entered manually
+    private boolean all_fields_fetched_or_entered = true; // Check if all fields are either fetched or entered manually
     private String passwordIsGivenByAdmin;
 
     Student(){
